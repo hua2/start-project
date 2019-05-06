@@ -1,58 +1,118 @@
 <template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
-    <p>
-      For a guide and recipes on how to configure / customize this project,<br>
-      check out the
-      <a href="https://cli.vuejs.org" target="_blank" rel="noopener">vue-cli documentation</a>.
-    </p>
-    <h3>Installed CLI Plugins</h3>
-    <ul>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-babel" target="_blank" rel="noopener">babel</a></li>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-eslint" target="_blank" rel="noopener">eslint</a></li>
-    </ul>
-    <h3>Essential Links</h3>
-    <ul>
-      <li><a href="https://vuejs.org" target="_blank" rel="noopener">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank" rel="noopener">Forum</a></li>
-      <li><a href="https://chat.vuejs.org" target="_blank" rel="noopener">Community Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank" rel="noopener">Twitter</a></li>
-      <li><a href="https://news.vuejs.org" target="_blank" rel="noopener">News</a></li>
-    </ul>
-    <h3>Ecosystem</h3>
-    <ul>
-      <li><a href="https://router.vuejs.org" target="_blank" rel="noopener">vue-router</a></li>
-      <li><a href="https://vuex.vuejs.org" target="_blank" rel="noopener">vuex</a></li>
-      <li><a href="https://github.com/vuejs/vue-devtools#vue-devtools" target="_blank" rel="noopener">vue-devtools</a></li>
-      <li><a href="https://vue-loader.vuejs.org" target="_blank" rel="noopener">vue-loader</a></li>
-      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">awesome-vue</a></li>
-    </ul>
-  </div>
+    <a-layout id="components-layout-demo-custom-trigger">
+        <a-layout-sider
+                :trigger="null"
+                collapsible
+                v-model="collapsed"
+        >
+            <div class="logo">
+                <h1>JM.ENERGY</h1>
+            </div>
+            <a-layout-sider width="200" style="background: #fff">
+                <a-menu
+                        mode="inline"
+                        :defaultSelectedKeys="['1']"
+                        :defaultOpenKeys="['sub1']"
+                        :style="{ height: '100%', borderRight: 0 }"
+                >
+                    <a-sub-menu key="sub1">
+                        <span slot="title"><a-icon type="user"/>仪表盘</span>
+                        <a-menu-item key="1">option1</a-menu-item>
+                        <a-menu-item key="2">option2</a-menu-item>
+                        <a-menu-item key="3">option3</a-menu-item>
+                        <a-menu-item key="4">option4</a-menu-item>
+                    </a-sub-menu>
+                    <a-sub-menu key="sub2">
+                        <span slot="title"><a-icon type="laptop"/>表单页</span>
+                        <a-menu-item key="5">option5</a-menu-item>
+                        <a-menu-item key="6">option6</a-menu-item>
+                        <a-menu-item key="7">option7</a-menu-item>
+                        <a-menu-item key="8">option8</a-menu-item>
+                    </a-sub-menu>
+                    <a-sub-menu key="sub3">
+                        <span slot="title"><a-icon type="notification"/>列表页</span>
+                        <a-menu-item key="9">option9</a-menu-item>
+                        <a-menu-item key="10">option10</a-menu-item>
+                        <a-menu-item key="11">option11</a-menu-item>
+                        <a-menu-item key="12">option12</a-menu-item>
+                    </a-sub-menu>
+                </a-menu>
+            </a-layout-sider>
+        </a-layout-sider>
+        <a-layout>
+            <a-layout-header style="background: #fff; padding: 0">
+                <a-icon
+                        class="trigger"
+                        :type="collapsed ? 'menu-unfold' : 'menu-fold'"
+                        @click="()=> collapsed = !collapsed"
+                />
+            </a-layout-header>
+            <a-layout-header>
+                <a-breadcrumb>
+                    <a-breadcrumb-item href="">
+                        <a-icon type="home"/>
+                    </a-breadcrumb-item>
+                    <a-breadcrumb-item href="">
+                        <a-icon type="user"/>
+                        <span>Application List</span>
+                    </a-breadcrumb-item>
+                    <a-breadcrumb-item>
+                        Application
+                    </a-breadcrumb-item>
+                </a-breadcrumb>
+            </a-layout-header>
+            <a-layout-content :style="{ margin: '24px 16px', padding: '24px', background: '#fff', minHeight: '280px' }">
+                Content
+            </a-layout-content>
+        </a-layout>
+    </a-layout>
 </template>
-
 <script>
-export default {
-  name: 'HelloWorld',
-  props: {
-    msg: String
-  }
-}
+    export default {
+        data() {
+            return {
+                collapsed: false,
+            }
+        },
+    }
 </script>
+<style>
+    #components-layout-demo-custom-trigger .trigger {
+        font-size: 18px;
+        line-height: 64px;
+        padding: 0 24px;
+        cursor: pointer;
+        transition: color .3s;
+    }
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
+    #components-layout-demo-custom-trigger .trigger:hover {
+        color: #1890ff;
+    }
+
+    #components-layout-demo-custom-trigger .logo {
+        height: 45px;
+        width: 45px;
+        background: url("../assets/logo.png");
+        background-size: 100% 100%;
+        margin: 16px;
+    }
+
+    .logo h1 {
+        color: #fff;
+        margin: 0 0 0 60px;
+        font-family: Avenir, Helvetica Neue, Arial, Helvetica, sans-serif;
+        font-weight: 400;
+        vertical-align: middle;
+        font-size: 18px;
+        line-height: 46px;
+    }
+
+    .ant-layout {
+        height: 100%;
+    }
+
+    .ant-layout-header{
+        background: #fff!important;
+        padding: 20px 50px !important;
+    }
 </style>
