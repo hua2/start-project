@@ -5,7 +5,6 @@
                 collapsible
                 v-model="collapsed"
         >
-            <!--<div class="logo"/>-->
             <div class="logo">
                 <h1>JM.ENERGY</h1>
             </div>
@@ -18,9 +17,15 @@
             >
                 <a-sub-menu key="sub1">
                     <span slot="title"><a-icon type="pie-chart"/><span>仪表盘</span></span>
-                    <a-menu-item key="1">分析</a-menu-item>
-                    <a-menu-item key="2">监控页（外部）</a-menu-item>
-                    <a-menu-item key="3">工作台</a-menu-item>
+                    <a-menu-item key="1">
+                        <router-link to="/">分析</router-link>
+                    </a-menu-item>
+                    <a-menu-item key="2">
+                        <router-link to="/about">监控页（外部）</router-link>
+                    </a-menu-item>
+                    <a-menu-item key="3">
+                        <router-link to="/table"> 工作台</router-link>
+                    </a-menu-item>
                 </a-sub-menu>
                 <a-sub-menu key="sub2">
                     <span slot="title"><a-icon type="form"/><span>表单页</span></span>
@@ -69,93 +74,22 @@
                         :type="collapsed ? 'menu-unfold' : 'menu-fold'"
                         @click="()=> collapsed = !collapsed"
                 />
-                <div class="content-box">
-                    <a href="http://javayuan.cn/" target="_blank">
-                        <a-icon type="question-circle-o"></a-icon>
-                    </a>
-                    <a-icon type="bell"></a-icon>
-                    <img src="../assets/avatar2.jpg" alt="">
-                    <span>天野远子</span>
-                </div>
-                <div class="avatar">
-                    <a-breadcrumb style="padding: 16px 10px">
-                        <a-breadcrumb-item>首页</a-breadcrumb-item>
-                        <a-breadcrumb-item>仪表盘</a-breadcrumb-item>
-                        <a-breadcrumb-item>工作台</a-breadcrumb-item>
-                    </a-breadcrumb>
-                </div>
-                <div class="row">
-                    <div class="avatar-left">
-                        <span><img src="../assets/avatar2.jpg" alt=""/></span>
-                    </div>
-                    <div class="headerContent">
-                        <div class="title">
-                            下午好，天野远子 <span>,准备吃什么呢?</span>
-                        </div>
-                        <div>角马商城 | 角马能源 - 角马后台管理系统 - JM平台</div>
-                    </div>
-                    <div class="extra">
-                        <div class="ant-col-8">
-                            <div class="header-info">
-                                <span class="top">项目数</span>
-                                <p class="bottom">56</p>
-                            </div>
-                        </div>
-                        <div class="ant-col-8">
-                            <div class="header-info">
-                                <span>团队排名</span>
-                                <p>12/26</p>
-                            </div>
-                        </div>
-                        <div class="ant-col-8">
-                            <div class="header-info">
-                                <span>项目访问</span>
-                                <p>2,223</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </a-layout-header>
-            <a-layout-content
-                    :style="{ margin: '24px 16px', padding: '24px', background: '#fff', minHeight: '280px',marginTop: '180px' }">
-                <a-card title="进行中的项目">
-                    <a-card-grid style="width:33.3%;textAlign:'center'">Content</a-card-grid>
-                    <a-card-grid style="width:33.3%;textAlign:'center'">Content</a-card-grid>
-                    <a-card-grid style="width:33.3%;textAlign:'center'">Content</a-card-grid>
-                    <a-card-grid style="width:33.3%;textAlign:'center'">Content</a-card-grid>
-                    <a-card-grid style="width:33.3%;textAlign:'center'">Content</a-card-grid>
-                    <a-card-grid style="width:33.3%;textAlign:'center'">Content</a-card-grid>
-                </a-card>
+            <a-layout-content :style="{ margin: '24px 16px', padding: '24px', background: '#fff', minHeight: '280px' }">
+                <router-view/>
             </a-layout-content>
-            <a-layout-content>
-                <a-card :loading="loading" title="动态" >
-                    <a-list
-                            itemLayout="horizontal"
-                            :dataSource="data">
-                        <a-list-item slot="renderItem" slot-scope="item, index">
-                            <a-list-item-meta
-                                    description="Ant Design, a design language for background applications, is refined by Ant UED Team">
-                                <a slot="title" href="https://vue.ant.design/">{{item.title}}</a>
-                                <a-avatar slot="avatar"
-                                          src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"/>
-                            </a-list-item-meta>
-                        </a-list-item>
-                    </a-list>
-                </a-card>
-            </a-layout-content>
-
             <a-layout-footer style="text-align: center">
-                JM Design ©2019 Created by Hua Hua
+                huahuah
             </a-layout-footer>
+
 
         </a-layout>
     </a-layout>
 </template>
 <script>
-    import ALayoutSider from "ant-design-vue/es/layout/Sider";
 
     export default {
-        components: {ALayoutSider},
+        components: {},
         data() {
             return {
                 collapsed: false,
@@ -249,7 +183,6 @@
         height: 100px;
         background: #fff;
     }
-
 
     .row .avatar-left img {
         border-radius: 72px;
