@@ -16,44 +16,15 @@
         <div>
             <a-button type="primary" @click="addClick">Add</a-button>
         </div>
-
     </div>
 
 </template>
 <script>
-    export default {
-        name: "Table",
-        data() {
-            return {
-                data,
-                columns,
-            }
-        },
-        methods: {
-            deleteClick: function (key) {
-                const i = this.data.findIndex(d => d.key === key)
-                this.data.splice(i, 1)
-            },
-            updateClick: function (a) {
-                a.age = a.age * 2;
-            },
-            addClick: function () {
-                this.data.push({
-                    key: this.data.length + 1,
-                    name: 'Black',
-                    age: 32,
-                    address: 'Sidney No. 1 Lake Park',
-                    tags: ['cool', 'teacher'],
-                })
-            },
-        }
-    }
-
     const columns = [{
         dataIndex: 'name',
         key: 'name',
-        slots: {title: 'customTitle'},
-        scopedSlots: {customRender: 'name'},
+        slots: { title: 'customTitle' },
+        scopedSlots: { customRender: 'name' },
     }, {
         title: 'Age',
         dataIndex: 'age',
@@ -66,11 +37,11 @@
         title: 'Tags',
         key: 'tags',
         dataIndex: 'tags',
-        scopedSlots: {customRender: 'tags'},
+        scopedSlots: { customRender: 'tags' },
     }, {
         title: 'Action',
         key: 'action',
-        scopedSlots: {customRender: 'action'},
+        scopedSlots: { customRender: 'action' },
     }];
 
     const data = [{
@@ -93,7 +64,35 @@
         tags: ['cool', 'teacher'],
     }];
 
+    export default {
+        data() {
+            return {
+                data,
+                columns,
+            }
+        },
+        methods: {
+            deleteClick: function (key) {
+                const i = this.data.findIndex(d => d.key === key);
+                this.data.splice(i, 1)
 
+
+            },
+            addClick: function () {
+                this.data.push({
+                    key: this.data.length + 1,
+                    name: 'Black',
+                    age: 32,
+                    address: 'Sidney No. 1 Lake Park',
+                    tags: ['cool', 'teacher'],
+                })
+            },
+            updateClick: function (a) {
+                a.age = a.age * 2;
+
+            }
+        }
+    }
 </script>
 
 <style scoped>
