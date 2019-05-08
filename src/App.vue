@@ -1,19 +1,8 @@
 <template>
   <div id="app">
-    <HelloWorld></HelloWorld>
+    <BasicLayout/>
   </div>
 </template>
-
-<script>
-import HelloWorld from './components/HelloWorld.vue'
-
-export default {
-  name: 'app',
-  components: {
-    HelloWorld
-  }
-}
-</script>
 
 <style>
   * {
@@ -33,3 +22,9 @@ export default {
   }
 
 </style>
+<script>
+  import BasicLayout from "./components/BasicLayout";
+  export default {
+    components: {BasicLayout}
+  }
+</script>
