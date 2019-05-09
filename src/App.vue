@@ -1,30 +1,30 @@
 <template>
-  <div id="app">
-    <Login/>
-  </div>
+    <div id="app">
+        <router-view/>
+    </div>
 </template>
 
 <style>
-  * {
-    margin: 0;
-    padding: 0;
-  }
+    * {
+        margin: 0;
+        padding: 0;
+    }
 
-  body, html {
-    width: 100%;
-    height: 100%;
-  }
+    body, html {
+        width: 100%;
+        height: 100%;
+    }
 
-  #app {
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-  }
+    #app {
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+    }
 
 </style>
 <script>
-  import Login from "./views/Login";
-  export default {
-    components: {Login}
-  }
+
+    export default {
+        components: {}
+    }
 </script>
