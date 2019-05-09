@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <BasicLayout/>
+    <Login/>
   </div>
 </template>
 
@@ -23,8 +23,8 @@
 
 </style>
 <script>
-  import BasicLayout from "./components/BasicLayout";
+  import Login from "./components/Login";
   export default {
-    components: {BasicLayout}
+    components: {Login}
   }
 </script>
