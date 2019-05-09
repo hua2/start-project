@@ -34,7 +34,7 @@
 'password',
   {
     rules: [{
-      required: true, message: 'Please input your password!',
+      required: true, message: '请输入密码!',
     }, {
       validator: validateToNextPassword,
     }],
@@ -166,7 +166,7 @@
         transform: translate(-50%)!important;
     }
     .has-error .ant-form-explain{
-        transform: translate(25%)!important;
+        transform: translate(18%)!important;
     }
     .ant-form-item-label label{
         margin-left: 75px!important;
