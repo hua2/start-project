@@ -1,14 +1,15 @@
 /**
  * api接口的统一出口
  */
-// 文章模块接口
-import article from '@/api/article/article';
-import news from '@/api/news/news';
+
+// 用户模块接口
+import user from '@/api/user';
+import region from '@/api/region';
 // 其他模块的接口……
 
 // 导出接口
 export default {
-    article,
-    news,
+    user,
+    region,
     // ……
 }

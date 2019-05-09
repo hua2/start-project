@@ -10,7 +10,7 @@
             <a-form-item>
                 <a-input
                         v-decorator="[
-          'userName',
+          'username',
           { rules: [{ required: true, message: 'Please input your username!' }] }
         ]"
                         placeholder="Username"
@@ -41,7 +41,7 @@
             <a-form-item>
                 <a-checkbox
                         v-decorator="[
-          'remember',
+          'rememberMe',
           {
             valuePropName: 'checked',
             initialValue: true,
@@ -63,14 +63,14 @@
                 >
                     Log in
                 </a-button>
-                Or <a href="">
-                register now!
-            </a>
+                Or
+                <router-link to="/session/register"> register now!</router-link>
             </a-form-item>
         </a-form>
     </div>
 </template>
 <script>
+
     export default {
         data() {
             return {}
@@ -84,6 +84,17 @@
                 this.form.validateFields((err, values) => {
                     if (!err) {
                         console.log('Received values of form: ', values);
+                        this.$api.user.login(values
+                        ).then(res => {
+                            // 执行某些操作
+                            if (values.rememberMe) {
+                                localStorage.setItem('token', res.data.id_token);
+                            } else {
+                                sessionStorage.setItem('token', res.data.id_token)
+                            }
+                            this.$router.push('/home');
+                            console.log(res)
+                        })
                     }
                 });
             },

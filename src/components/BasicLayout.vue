@@ -18,10 +18,8 @@
                 <a-sub-menu key="sub1">
                     <span slot="title"><a-icon type="pie-chart"/><span>仪表盘</span></span>
                     <a-menu-item key="1"><router-link to="/">分析</router-link></a-menu-item>
-                    <a-menu-item key="2"><router-link to="/about">监控页（外部）</router-link></a-menu-item>
-                    <a-menu-item key="3"><router-link to="/table"> 工作台</router-link></a-menu-item>
-                    <a-menu-item key="31"><router-link to="/session/login"> 登录</router-link></a-menu-item>
-                    <a-menu-item key="32"><router-link to="/session/register"> 注册</router-link></a-menu-item>
+                    <a-menu-item key="2"><router-link to="/about">关于</router-link></a-menu-item>
+                    <a-menu-item key="3"><router-link to="/region">地区</router-link></a-menu-item>
                 </a-sub-menu>
                 <a-sub-menu key="sub2">
                     <span slot="title"><a-icon type="form"/><span>表单页</span></span>

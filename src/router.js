@@ -3,8 +3,8 @@ import Router from 'vue-router'
 import BasicLayout from "@/components/BasicLayout";
 import Home from "@/views/Home";
 import SessionLayout from "@/components/SessionLayout";
-import Login from "@/views/Login";
-import Register from "@/views/Register";
+import Login from "@/views/user/Login";
+import Register from "@/views/user/Register";
 
 Vue.use(Router);
 
@@ -33,9 +33,9 @@ export default new Router({
                     component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
                 },
                 {
-                    path: 'table',
-                    name: 'table',
-                    component: () => import(/* webpackChunkName: "table" */ './views/Table.vue')
+                    path: 'region',
+                    name: 'region',
+                    component: () => import(/* webpackChunkName: "region" */ './views/region/Region.vue')
                 },
             ]
         },
