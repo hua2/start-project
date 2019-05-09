@@ -3,7 +3,7 @@
  */
 import axios from 'axios';
 import router from '../router';
-import message from 'ant-design-vue';
+import {message} from 'ant-design-vue';
 
 /**
  * 跳转登录页
@@ -32,7 +32,7 @@ const errorHandle = (status, other) => {
         // 403 token过期
         // 清除token并跳转登录页
         case 403:
-            message.error('登录过期，请重新登录',1000);
+            message.error('登录过期，请重新登录',5);
             localStorage.removeItem('token');
             // store.commit('loginSuccess', null);
             setTimeout(() => {
@@ -41,7 +41,7 @@ const errorHandle = (status, other) => {
             break;
         // 404请求不存在
         case 404:
-            message.error('请求的资源不存在',1000);
+            message.error('请求的资源不存在',5);
             break;
         default:
             console.log(other);
