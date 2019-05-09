@@ -6,18 +6,6 @@ import router from '../router';
 import message from 'ant-design-vue';
 
 /**
- * 提示函数
- * 禁止点击蒙层、显示一秒后关闭
- */
-const tip = msg => {
-    message({
-        message: msg,
-        duration: 1000,
-        forbidClick: true
-    });
-}
-
-/**
  * 跳转登录页
  * 携带当前页面路由，以期在登录页面完成登录后返回当前页面
  */
@@ -44,7 +32,7 @@ const errorHandle = (status, other) => {
         // 403 token过期
         // 清除token并跳转登录页
         case 403:
-            tip('登录过期，请重新登录');
+            message.error('登录过期，请重新登录',1000);
             localStorage.removeItem('token');
             // store.commit('loginSuccess', null);
             setTimeout(() => {
@@ -53,7 +41,7 @@ const errorHandle = (status, other) => {
             break;
         // 404请求不存在
         case 404:
-            tip('请求的资源不存在');
+            message.error('请求的资源不存在',1000);
             break;
         default:
             console.log(other);
