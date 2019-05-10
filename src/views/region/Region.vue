@@ -2,56 +2,27 @@
     <div>
         <div>
             <a-button type="primary" @click="addClick">Add</a-button>
-            <a-modal
-                    title="Title"
-                    :visible="visible"
-                    @ok="handleOk"
-                    :confirmLoading="confirmLoading"
-                    @cancel="handleCancel"
-            >
-                <a-form
-                        :form="form"
-                        @submit="handleSubmit"
-                >
-                    <a-form-item
-                            label="Note"
-                            :label-col="{ span: 5 }"
-                            :wrapper-col="{ span: 12 }"
-                    >
-                        <a-input
-                                v-decorator="[
-          'note',
-          {rules: [{ required: true, message: 'Please input your note!' }]}
-        ]"
-                        />
-                    </a-form-item>
-                    <a-form-item
-                            :wrapper-col="{ span: 12, offset: 5 }"
-                    >
-                        <a-button
-                                type="primary"
-                                html-type="submit"
-                        >
-                            Submit
-                        </a-button>
-                    </a-form-item>
-                </a-form>
-            </a-modal>
+
         </div>
 
         <a-table :columns="columns" :dataSource="data">
             <div slot="action" slot-scope="text">
                 <a-button-group>
-                    <a-button @click="deleteClick(text.key)">Delete</a-button>
+                    <a-popconfirm title="Are you sure delete this?" @confirm="deleteClick(text.id)">
+                        <a-button>Delete</a-button>
+                    </a-popconfirm>
                     <a-button @click="updateClick(text)">Update</a-button>
                 </a-button-group>
             </div>
         </a-table>
+        <RegionModal ref="modal" @ok="handleSaveOk" @close="handleSaveClose"></RegionModal>
 
     </div>
 
 </template>
 <script>
+    import RegionModal from "@/views/region/RegionModal";
+
     const columns = [{
         title: 'id',
         dataIndex: 'id',
@@ -66,48 +37,38 @@
 
     export default {
         name: 'region',
+        components: {RegionModal},
         data() {
             return {
                 data: [],
                 columns,
-                ModalText: 'Content of the modal',
-                visible: false,
-                confirmLoading: false,
             }
         },
         created() {
             this.loadData();
         },
         methods: {
-            deleteClick: function (key) {
-                const i = this.data.findIndex(d => d.key === key);
-                this.data.splice(i, 1)
-
-
+            deleteClick: function (id) {
+                this.$api.region.deleteRegion(id).then(() => {
+                    this.$message.success('删除成功！');
+                    this.loadData();
+                })
             },
-            updateClick: function (a) {
-                a.age = a.age * 2;
-
+            updateClick: function (data) {
+                this.$refs.modal.update(data);
+            },
+            addClick: function () {
+                this.$refs.modal.add();
             },
             loadData: function () {
                 this.$api.region.regionData().then(res => {
                     this.data = res.data;
                 })
             },
-            addClick() {
-                this.visible = true
+            handleSaveOk() {
+                this.loadData();
             },
-            handleOk() {
-                this.ModalText = 'The modal will be closed after two seconds';
-                this.confirmLoading = true;
-                setTimeout(() => {
-                    this.visible = false;
-                    this.confirmLoading = false;
-                }, 1500);
-            },
-            handleCancel() {
-                console.log('Clicked cancel button');
-                this.visible = false
+            handleSaveClose() {
             },
         }
     }

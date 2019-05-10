@@ -94,6 +94,8 @@
                             }
                             this.$router.push('/home');
                             console.log(res)
+                        }).catch(() => {
+                            this.$message.error('用户名或密码错误！');
                         })
                     }
                 });
