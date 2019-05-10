@@ -27,7 +27,6 @@ const errorHandle = (status, other) => {
     switch (status) {
         // 401: 未登录状态，跳转登录页
         case 401:
-            message.error('用户名或密码错误！',3);
             toLogin();
             break;
         // 403 token过期
