@@ -74,7 +74,7 @@ instance.interceptors.request.use(
 // 响应拦截器
 instance.interceptors.response.use(
     // 请求成功
-    res => res.status === 200 ? Promise.resolve(res) : Promise.reject(res),
+    res => Promise.resolve(res),
     // 请求失败
     error => {
         const { response } = error;

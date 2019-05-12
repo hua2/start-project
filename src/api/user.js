@@ -11,7 +11,10 @@ const user = {
     // 用户登录  (定义调用接口的方法，根据需求传参，并返回数据)
     login (data) {
         return axios.post(`${base.api}/authenticate`, data)
+    },
+    getAccount () {
+        return axios.get(`${base.api}/account`)
     }
-}
+};
 
 export default user;

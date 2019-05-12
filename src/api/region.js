@@ -11,6 +11,15 @@ const region = {
     // 地区  (定义调用接口的方法，根据需求传参，并返回数据)
     regionData () {
         return axios.get(`${base.api}/regions`)
+    },
+    createRegion (data) {
+        return axios.post(`${base.api}/regions`,data)
+    },
+    deleteRegion (id) {
+        return axios.delete(`${base.api}/regions/${id}`)
+    },
+    updateRegion (data) {
+        return axios.put(`${base.api}/regions/`,data)
     }
 };
 
