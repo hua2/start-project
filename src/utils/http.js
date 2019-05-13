@@ -16,7 +16,7 @@ const toLogin = () => {
             redirect: router.currentRoute.fullPath
         }
     });
-}
+};
 
 /**
  * 请求失败后的错误统一处理

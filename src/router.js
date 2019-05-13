@@ -37,6 +37,11 @@ export default new Router({
                     name: 'region',
                     component: () => import(/* webpackChunkName: "region" */ './views/region/Region.vue')
                 },
+                {
+                    path: 'country',
+                    name: 'country',
+                    component: () => import(/* webpackChunkName: "country" */ './views/country/Country.vue')
+                },
             ]
         },
         {

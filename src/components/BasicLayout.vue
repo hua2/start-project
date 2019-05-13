@@ -20,6 +20,7 @@
                     <a-menu-item key="1"><router-link to="/">分析</router-link></a-menu-item>
                     <a-menu-item key="2"><router-link to="/about">关于</router-link></a-menu-item>
                     <a-menu-item key="3"><router-link to="/region">地区</router-link></a-menu-item>
+                    <a-menu-item key="4"><router-link to="/country">国家</router-link></a-menu-item>
                 </a-sub-menu>
                 <a-sub-menu key="sub2">
                     <span slot="title"><a-icon type="form"/><span>表单页</span></span>

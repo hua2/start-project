@@ -5,11 +5,13 @@
 // 用户模块接口
 import user from '@/api/user';
 import region from '@/api/region';
+import country from '@/api/country';
 // 其他模块的接口……
 
 // 导出接口
 export default {
     user,
     region,
+    country,
     // ……
 }

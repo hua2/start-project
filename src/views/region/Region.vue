@@ -13,7 +13,6 @@
                 </a-button-group>
             </div>
         </a-table>
-
     </div>
 
 </template>
@@ -62,7 +61,7 @@
             addClick() {
                 this.$refs.modal.add();
             },
-            handleOk(){
+            handleOk() {
                 this.loadData();
             }
         }
