@@ -67,7 +67,6 @@
                                 countryName: values.countryName,
                                 required:values.required}).then(() => {
                                 this.ok();
-                                this.countryData();
                                 this.$message.success('创建成功');
                             }).catch(() => {
                                 this.confirmLoading = false;
