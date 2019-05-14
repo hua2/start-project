@@ -6,6 +6,7 @@
 import user from '@/api/user';
 import region from '@/api/region';
 import country from '@/api/country';
+import department from '@/api/department';
 // 其他模块的接口……
 
 // 导出接口
@@ -13,5 +14,6 @@ export default {
     user,
     region,
     country,
+    department,
     // ……
 }

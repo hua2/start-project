@@ -40,7 +40,6 @@
             return {
                 data: [],
                 columns,
-                visible: false,
             }
         },
 

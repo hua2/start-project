@@ -42,6 +42,11 @@ export default new Router({
                     name: 'country',
                     component: () => import(/* webpackChunkName: "country" */ './views/country/Country.vue')
                 },
+                {
+                    path: 'department',
+                    name: 'department',
+                    component: () => import(/* webpackChunkName: "department" */ './views/department/Depart.vue')
+                },
             ]
         },
         {
