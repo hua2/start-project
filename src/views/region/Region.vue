@@ -7,10 +7,11 @@
 
         <a-table :columns="columns" :dataSource="data" rowKey="id">
             <div slot="action" slot-scope="text">
-                <a-button-group>
-                    <a-button @click="deleteClick(text.id)">Delete</a-button>
-                    <a-button @click="updateClick(text)">Update</a-button>
-                </a-button-group>
+                <a-popconfirm title="Are you sure delete this task?" @confirm="deleteClick(text.id)"  okText="Yes" cancelText="No">
+                    <a href="javascript:">Delete</a>
+                </a-popconfirm>
+                <a-divider type="vertical" />
+                <a @click="updateClick(text)">Update</a>
             </div>
         </a-table>
     </div>

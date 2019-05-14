@@ -6,10 +6,11 @@
         </div>
         <a-table :columns="columns" :dataSource="data" rowKey="id">
             <div slot="action" slot-scope="text">
-                <a-button-group>
-                    <a-button @click="deleteMsg(text.id)">Delete</a-button>
-                    <a-button @click="updateMsg(text)">Update</a-button>
-                </a-button-group>
+                <a-popconfirm title="Are you sure delete this task?" @confirm="deleteMsg(text.id)"  okText="Yes" cancelText="No">
+                    <a href="javascript:">Delete</a>
+                </a-popconfirm>
+                <a-divider type="vertical" />
+                <a @click="updateMsg(text)">Update</a>
             </div>
         </a-table>
     </div>
@@ -25,7 +26,7 @@
         title: 'country',
         dataIndex: 'countryName',
     }, {
-        title: 'name',
+        title: 'region',
         dataIndex: 'regionName',
     }, {
         title: 'Action',
@@ -55,10 +56,10 @@
                 })
             },
             addMsg() {
-                this.$refs.modal.addCountries();
+                this.$refs.modal.add();
             },
             updateMsg: function (data) {
-                this.$refs.modal.updateCountries(data);
+                this.$refs.modal.update(data);
             },
             deleteMsg(key) {
                 this.$api.country.deleteCountry(key).then(() => {

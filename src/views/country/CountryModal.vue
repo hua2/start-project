@@ -20,7 +20,7 @@
                 />
             </a-form-item>
             <a-form-item
-                    label="regionId"
+                    label="regionName"
             >
                 <a-select
                         v-decorator="[
@@ -29,7 +29,7 @@
         ]"
                         placeholder="Select a option and change input text above"
                 >
-                    <a-select-option v-for="(x,index) in regions" :key="index" :value="x.regionName">
+                    <a-select-option v-for="(x,index) in regions" :key="index" :value="x.id">
                         {{x.regionName}}
                     </a-select-option>
                 </a-select>
@@ -65,7 +65,7 @@
                         if (!this.id) {
                             this.$api.country.createCountry({
                                 countryName: values.countryName,
-                                required:values.required}).then(() => {
+                                regionId:values.regionId}).then(() => {
                                 this.ok();
                                 this.$message.success('创建成功');
                             }).catch(() => {
@@ -74,7 +74,7 @@
                         } else {
                             this.$api.country.updateCountry({
                                 countryName: values.countryName,
-                                required: values.required,
+                                regionId: values.regionId,
                                 id: this.id}).then(() => {
                                 this.ok();
                                 this.$message.success('修改成功');
@@ -94,13 +94,13 @@
                 console.log('Clicked cancel button');
                 this.visible = false
             },
-            addCountries() {
-                this.updateCountries({id: undefined, countryName: '',required:''})
+            add() {
+                this.update({id: undefined, countryName: '',regionId:''})
             },
-            updateCountries(data) {
+            update(data) {
                 this.visible = true;
                 this.id = data.id;
-                this.form.setFieldsValue({countryName: data.countryName, required:data.required})
+                this.form.setFieldsValue({countryName: data.countryName, regionId:data.regionId})
             },
             regionData: function () {
                 this.$api.region.regionData().then(res => {
