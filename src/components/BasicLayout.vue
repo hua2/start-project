@@ -166,7 +166,6 @@
         background: #fff;
         padding: 16px 32px 0;
         border-top: 1px solid #e8e8e8;
-
     }
 
 
