@@ -1,18 +1,25 @@
 <template>
     <div>
-        <div>
-            <a-button type="primary" @click="addClick()">创建新团队</a-button>
-            <DepartModal ref="modal" @ok="handleOk"/>
+        <div class="home">
+            <h1 class="title">Department</h1>
+            <p>Department页用于向用户收集或验证信息，基础表单常见于数据项较少的表单场景。</p>
         </div>
-        <a-table :columns="columns" :dataSource="data" rowKey="id">
-            <div slot="action" slot-scope="text">
-                <a-popconfirm title="Are you sure delete this task?" @confirm="deleteClick(text.id)"  okText="Yes" cancelText="No">
-                    <a href="javascript:">Delete</a>
-                </a-popconfirm>
-                <a-divider type="vertical" />
-                <a @click="updateClick(text)">Update</a>
+        <div class="content">
+            <div>
+                <a-button type="primary" @click="addClick()"><a-icon type="plus" />新建</a-button>
+                <DepartModal ref="modal" @ok="handleOk"/>
             </div>
-        </a-table>
+            <a-table :columns="columns" :dataSource="data" rowKey="id">
+                <div slot="action" slot-scope="text">
+                    <a-popconfirm title="Are you sure delete this task?" @confirm="deleteClick(text.id)"  okText="Yes" cancelText="No">
+                        <a href="javascript:">Delete</a>
+                    </a-popconfirm>
+                    <a-divider type="vertical" />
+                    <a @click="updateClick(text)">Update</a>
+                </div>
+            </a-table>
+        </div>
+
     </div>
 </template>
 

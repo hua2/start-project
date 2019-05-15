@@ -17,11 +17,21 @@
             >
                 <a-sub-menu key="sub1">
                     <span slot="title"><a-icon type="pie-chart"/><span>仪表盘</span></span>
-                    <a-menu-item key="1"><router-link to="/">分析</router-link></a-menu-item>
-                    <a-menu-item key="2"><router-link to="/about">关于</router-link></a-menu-item>
-                    <a-menu-item key="3"><router-link to="/region">地区</router-link></a-menu-item>
-                    <a-menu-item key="4"><router-link to="/country">国家</router-link></a-menu-item>
-                    <a-menu-item key="5"><router-link to="/department">团队</router-link></a-menu-item>
+                    <a-menu-item key="1">
+                        <router-link to="/">分析</router-link>
+                    </a-menu-item>
+                    <a-menu-item key="2">
+                        <router-link to="/about">关于</router-link>
+                    </a-menu-item>
+                    <a-menu-item key="3">
+                        <router-link to="/region">地区</router-link>
+                    </a-menu-item>
+                    <a-menu-item key="4">
+                        <router-link to="/country">国家</router-link>
+                    </a-menu-item>
+                    <a-menu-item key="5">
+                        <router-link to="/department">团队</router-link>
+                    </a-menu-item>
                 </a-sub-menu>
                 <a-sub-menu key="sub2">
                     <span slot="title"><a-icon type="form"/><span>表单页</span></span>
@@ -71,7 +81,19 @@
                         @click="()=> collapsed = !collapsed"
                 />
             </a-layout-header>
-            <a-layout-content :style="{ margin: '24px 16px', padding: '24px', background: '#fff', minHeight: '280px' }">
+            <div class="breadcrumb">
+                <a-breadcrumb :routes="routes">
+                    <template slot="itemRender" slot-scope="{route, params, routes, paths}">
+      <span v-if="routes.indexOf(route) === routes.length - 1">
+        {{route.breadcrumbName}}  {{$route.path}}
+      </span>
+                        <router-link v-else :to="`${basePath}/${paths.join('/')}`">
+                            {{route.breadcrumbName}}
+                        </router-link>
+                    </template>
+                </a-breadcrumb>
+            </div>
+            <a-layout-content :style="{ margin: '0', minHeight: '280px' }">
                 <router-view/>
             </a-layout-content>
             <a-layout-footer style="text-align: center">
@@ -87,8 +109,17 @@
     export default {
         components: {},
         data() {
+            const {lang} = this.$route.params;
             return {
                 collapsed: false,
+                basePath: `/${lang}/components/breadcrumb`,
+                routes: [{
+                    path: 'index',
+                    breadcrumbName: '首页'
+                }, {
+                    path: 'first',
+                    breadcrumbName: '仪表盘'
+                }],
             }
         }
     }
@@ -129,6 +160,13 @@
 
     .ant-layout.ant-layout-has-sider {
         height: 100%;
+    }
+
+    .breadcrumb {
+        background: #fff;
+        padding: 16px 32px 0;
+        border-top: 1px solid #e8e8e8;
+
     }
 
 

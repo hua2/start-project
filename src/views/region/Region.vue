@@ -1,19 +1,27 @@
 <template>
     <div>
-        <div>
-            <a-button type="primary" @click="addClick">Add</a-button>
-            <RegionModal ref="modal" @ok="handleOk"/>
+        <div class="home">
+            <h1 class="title">Region</h1>
+            <p>Region页用于向用户收集或验证信息，基础表单常见于数据项较少的表单场景。</p>
+        </div>
+        <div class="content">
+            <div>
+                <a-button type="primary" @click="addClick"><a-icon type="plus" />新建</a-button>
+                <RegionModal ref="modal" @ok="handleOk"/>
+            </div>
+
+            <a-table :columns="columns" :dataSource="data" rowKey="id">
+                <div slot="action" slot-scope="text">
+                    <a-popconfirm title="Are you sure delete this task?" @confirm="deleteClick(text.id)" okText="Yes"
+                                  cancelText="No">
+                        <a href="javascript:">Delete</a>
+                    </a-popconfirm>
+                    <a-divider type="vertical"/>
+                    <a @click="updateClick(text)">Update</a>
+                </div>
+            </a-table>
         </div>
 
-        <a-table :columns="columns" :dataSource="data" rowKey="id">
-            <div slot="action" slot-scope="text">
-                <a-popconfirm title="Are you sure delete this task?" @confirm="deleteClick(text.id)"  okText="Yes" cancelText="No">
-                    <a href="javascript:">Delete</a>
-                </a-popconfirm>
-                <a-divider type="vertical" />
-                <a @click="updateClick(text)">Update</a>
-            </div>
-        </a-table>
     </div>
 
 </template>
@@ -70,5 +78,4 @@
 </script>
 
 <style scoped>
-
 </style>
