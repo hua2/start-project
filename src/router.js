@@ -47,6 +47,11 @@ export default new Router({
                     name: 'department',
                     component: () => import(/* webpackChunkName: "department" */ './views/department/Depart.vue')
                 },
+                {
+                    path: 'task',
+                    name: 'task',
+                    component: () => import(/* webpackChunkName: "task" */ './views/task/Task.vue')
+                },
             ]
         },
         {

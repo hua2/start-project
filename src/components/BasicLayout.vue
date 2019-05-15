@@ -6,7 +6,7 @@
                 v-model="collapsed"
         >
             <div class="logo">
-                <h1>JM.ENERGY</h1>
+                <h1>HUA</h1>
             </div>
             <a-menu
                     :defaultSelectedKeys="['1']"
@@ -32,17 +32,18 @@
                     <a-menu-item key="5">
                         <router-link to="/department">团队</router-link>
                     </a-menu-item>
+                    <a-menu-item key="6">
+                        <router-link to="/task">任务</router-link>
+                    </a-menu-item>
                 </a-sub-menu>
                 <a-sub-menu key="sub2">
                     <span slot="title"><a-icon type="form"/><span>表单页</span></span>
-                    <!--<a-menu-item key="4">基础表单</a-menu-item>-->
-                    <!--<a-menu-item key="5">分布表单</a-menu-item>-->
-                    <a-menu-item key="6">高级表单</a-menu-item>
+                    <a-menu-item key="7">基础表单</a-menu-item>
+                    <a-menu-item key="8">分布表单</a-menu-item>
                 </a-sub-menu>
                 <a-sub-menu key="sub3">
                     <span slot="title"><a-icon type="table"/><span>列表页</span></span>
-                    <a-menu-item key="7">查询列表</a-menu-item>
-                    <a-menu-item key="8">标准列表</a-menu-item>
+
                     <a-menu-item key="9">卡片列表</a-menu-item>
                     <a-menu-item key="10">搜索列表</a-menu-item>
                 </a-sub-menu>
