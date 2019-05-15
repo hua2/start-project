@@ -36,7 +36,7 @@
 
     .content {
         background: #fff;
-        margin: 24px 16px;
+        margin: 24px 0;
         padding: 24px 24px 0;
         min-height: 680px;
 

@@ -75,11 +75,36 @@
         </a-layout-sider>
         <a-layout>
             <a-layout-header style="background: #fff; padding: 0">
-                <a-icon
-                        class="trigger"
-                        :type="collapsed ? 'menu-unfold' : 'menu-fold'"
-                        @click="()=> collapsed = !collapsed"
-                />
+                <div>
+                    <div>
+                        <a-icon
+                                class="trigger"
+                                :type="collapsed ? 'menu-unfold' : 'menu-fold'"
+                                @click="()=> collapsed = !collapsed"
+                        />
+                        <div style="float: right;margin: 0 10px">
+                            <span class="action"><a-icon type="question-circle-o"/></span>
+                            <span class="action"><a-icon type="bell"/></span>
+                            <a-dropdown>
+                                <a class="action" href="#">
+                                    <a-avatar class="avatar" size="small" style="margin-right: 12px"
+                                              src="https://axure-file.lanhuapp.com/6b1d2547-b791-4d62-adce-a4881352a46d__862eb7a7eeb6b7490153498e634cb182" />天野远子
+                                </a>
+                                <a-menu slot="overlay">
+                                    <a-menu-item key="0">
+                                        <a href="http://javayuan.cn/"><a-icon type="home"/> 个人中心 </a>
+                                    </a-menu-item>
+                                    <a-menu-item key="1">
+                                        <a href="http://www.baidu.com/"><a-icon type="setting"/> 账户设置 </a>
+                                    </a-menu-item>
+                                    <a-menu-divider />
+                                    <a-menu-item key="3"><a-icon type="logout"/> 退出登录</a-menu-item>
+                                </a-menu>
+                            </a-dropdown>
+                        </div>
+                    </div>
+                </div>
+
             </a-layout-header>
             <div class="breadcrumb">
                 <a-breadcrumb :routes="routes">
@@ -166,6 +191,9 @@
         background: #fff;
         padding: 16px 32px 0;
         border-top: 1px solid #e8e8e8;
+    }
+    .action{
+        padding: 0 12px;
     }
 
 
