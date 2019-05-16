@@ -1,28 +1,25 @@
 <template>
     <div>
         <div class="home">
-            <div style="display: flex">
-                <a-avatar :size="64" icon="user" />
-                <div style="padding: 0 535px 0 20px">
+            <a-row type="flex" justify="space-around">
+                <a-col :span="4"> <a-avatar :size="64" icon="user" /></a-col>
+                <a-col :span="12" :pull="4">
                     <p>下午好，Ant Design，祝你开心每一天！</p>
                     <p>交互设计师  |  蚂蚁金服－平台数据技术事业群－基础平台部－用户体验技术部－UED</p>
-                </div>
-                <div style="display: flex">
-                    <div style="padding: 0 50px;text-align: center">
-                        <p>当前任务</p>
-                        <p>56</p>
-                    </div>
-                    <div style="padding: 0 50px;text-align: center">
-                        <p>当前任务</p>
-                        <p>56</p>
-                    </div>
-                    <div style="padding: 0 50px;text-align: center">
-                        <p>当前任务</p>
-                        <p>56</p>
-                    </div>
-
-                </div>
-            </div>
+                </a-col>
+                <a-col>
+                    <p>当前任务</p>
+                    <p style="text-align: center">56</p>
+                </a-col>
+                <a-col>
+                    <p>当前任务</p>
+                    <p style="text-align: center">56</p>
+                </a-col>
+                <a-col>
+                    <p>当前任务</p>
+                    <p style="text-align: center">56</p>
+                </a-col>
+            </a-row>
 
         </div>
         <div class="content">
