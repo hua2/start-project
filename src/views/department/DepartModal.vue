@@ -10,7 +10,7 @@
                 :form="form"
         >
             <a-form-item
-                    label="departmentName"
+                    label="团队名字"
             >
                 <a-input
                         v-decorator="[
@@ -20,7 +20,7 @@
                 />
             </a-form-item>
             <a-form-item
-                    label="countryName"
+                    label="所属国家"
             >
                 <a-select
                         v-decorator="[

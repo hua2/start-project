@@ -6,10 +6,42 @@
         </div>
         <div class="content">
             <div>
-                <a-button type="primary">
+                <a-button type="primary"  @click="addClick">
                     <a-icon type="plus"/>
                     新建
                 </a-button>
+                <a-modal
+                        :title="!id?'添加':'修改'"
+                        :visible="visible"
+                        @ok="handleOk"
+                        :confirmLoading="confirmLoading"
+                        @cancel="handleCancel"
+                >
+                    <a-form
+                            :form="form"
+                    >
+                        <a-form-item
+                                label="标题"
+                        >
+                            <a-input
+                                    v-decorator="[
+          'title',
+          {rules: [{ required: true, message: 'Please input your title!' }]}
+        ]"
+                            />
+                        </a-form-item>
+                        <a-form-item
+                                label="介绍"
+                        >
+                            <a-input
+                                    v-decorator="[
+          'jobId',
+          {rules: [{ required: true, message: 'Please input your description!' }]}
+        ]"
+                            />
+                        </a-form-item>
+                    </a-form>
+                </a-modal>
             </div>
 
             <a-table :columns="columns" :dataSource="data" rowKey="id">
@@ -34,6 +66,9 @@
             return {
                 columns,
                 data: [],
+                visible: false,
+                confirmLoading: false,
+
             }
         },
         beforeCreate() {
@@ -48,6 +83,46 @@
                     this.data = res.data;
                 })
             },
+            addClick(data){
+                this.$api.task.createTask(data).then(() => {
+                    this.visible = true;
+                    this.form.setFieldsValue({title: data.title, description: data.description, jobId:data.jobId})
+                })
+            },
+            deleteClick(key) {
+                this.$api.task.deleteTask(key).then(() => {
+                    this.taskData();
+                })
+            },
+
+            handleOk() {
+                this.form.validateFields((err, values) => {
+                    if (!err) {
+                        console.log('Received values of form: ', values);
+                        this.confirmLoading = true;
+                        if (!this.id) {
+                            this.$api.task.createTask({
+                                title: values.title,
+                                description: values.description,
+                                jobId:values.jobId}).then(() => {
+                                this.ok();
+                                this.$message.success('创建成功');
+                            }).catch(() => {
+                                this.confirmLoading = false;
+                            });
+                        }
+                    }
+                });
+            },
+            ok() {
+                this.confirmLoading = false;
+                this.visible = false;
+                this.$emit('ok')
+            },
+            handleCancel() {
+                console.log('Clicked cancel button');
+                this.visible = false
+            },
 
         }
     }
@@ -60,13 +135,7 @@
     }, {
         title: '介绍',
         dataIndex: 'description',
-    },  {
-        title: '开始时间',
-        dataIndex: 'startDate',
     }, {
-        title: '结束时间',
-        dataIndex: 'endDate',
-    },{
         title: '状态',
         dataIndex: 'status',
     }, {

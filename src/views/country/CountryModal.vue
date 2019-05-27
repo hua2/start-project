@@ -10,7 +10,7 @@
                 :form="form"
         >
             <a-form-item
-                    label="CountryName"
+                    label="国家名字"
             >
                 <a-input
                         v-decorator="[
@@ -20,7 +20,7 @@
                 />
             </a-form-item>
             <a-form-item
-                    label="regionName"
+                    label="地区"
             >
                 <a-select
                         v-decorator="[

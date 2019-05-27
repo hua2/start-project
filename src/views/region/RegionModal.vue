@@ -10,7 +10,7 @@
                 :form="form"
         >
             <a-form-item
-                    label="regionName"
+                    label="地区名字"
                     :label-col="{ span: 8 }"
                     :wrapper-col="{ span: 12 }"
             >
