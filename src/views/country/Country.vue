@@ -27,13 +27,13 @@
 
     import CountryModal from "./CountryModal";
     const columns = [{
-        title: 'id',
+        title: 'ID',
         dataIndex: 'id',
     }, {
-        title: 'country',
+        title: '国家名字',
         dataIndex: 'countryName',
     }, {
-        title: 'region',
+        title: '地区',
         dataIndex: 'regionName',
     }, {
         title: 'Action',

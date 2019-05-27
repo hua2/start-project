@@ -12,12 +12,12 @@
                     <p style="text-align: center">56</p>
                 </a-col>
                 <a-col>
-                    <p>当前任务</p>
-                    <p style="text-align: center">56</p>
+                    <p>总任务</p>
+                    <p style="text-align: center">200</p>
                 </a-col>
                 <a-col>
-                    <p>当前任务</p>
-                    <p style="text-align: center">56</p>
+                    <p>总工作</p>
+                    <p style="text-align: center">23</p>
                 </a-col>
             </a-row>
 

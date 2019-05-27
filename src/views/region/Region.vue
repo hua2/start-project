@@ -29,10 +29,10 @@
     import RegionModal from "@/views/region/RegionModal";
 
     const columns = [{
-        title: 'id',
+        title: 'ID',
         dataIndex: 'id',
     }, {
-        title: 'name',
+        title: '地区名字',
         dataIndex: 'regionName',
     }, {
         title: 'Action',

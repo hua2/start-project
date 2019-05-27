@@ -41,6 +41,9 @@
         min-height: 680px;
 
     }
+    .ant-table-wrapper{
+        margin-top: 1rem;
+    }
 
 </style>
 <script>

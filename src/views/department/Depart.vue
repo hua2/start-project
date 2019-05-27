@@ -29,10 +29,10 @@
         title: 'id',
         dataIndex: 'id',
     }, {
-        title: 'department',
+        title: '团队名字',
         dataIndex: 'departmentName',
     }, {
-        title: 'country',
+        title: '所属国家',
         dataIndex: 'countryName',
     }, {
         title: 'Action',

@@ -6,11 +6,21 @@
         </div>
         <div class="content">
             <div>
-                <a-button type="primary"><a-icon type="plus"/>新建</a-button>
+                <a-button type="primary">
+                    <a-icon type="plus"/>
+                    新建
+                </a-button>
             </div>
 
             <a-table :columns="columns" :dataSource="data" rowKey="id">
-
+                <div slot="action" slot-scope="text">
+                    <a-popconfirm title="Are you sure delete this task?" @confirm="deleteClick(text.id)" okText="Yes"
+                                  cancelText="No">
+                        <a href="javascript:">Delete</a>
+                    </a-popconfirm>
+                    <a-divider type="vertical"/>
+                    <a @click="updateClick(text)">Update</a>
+                </div>
             </a-table>
         </div>
 
@@ -20,46 +30,46 @@
 <script>
     export default {
         name: "task",
-        data(){
-            return{
+        data() {
+            return {
                 columns,
-                data:[],
+                data: [],
             }
         },
         beforeCreate() {
             this.form = this.$form.createForm(this);
         },
-        created(){
+        created() {
             this.taskData();
         },
-        methods:{
-            taskData(){
+        methods: {
+            taskData() {
                 this.$api.task.getTasks().then(res => {
-                    this.data= res.data;
+                    this.data = res.data;
                 })
             },
 
         }
     }
     const columns = [{
-        title: 'id',
+        title: 'ID',
         dataIndex: 'id',
     }, {
-        title: 'title',
-        dataIndex: 'taskName',
-    },{
-        title: 'introduction',
-        dataIndex: 'introduction',
-    },{
-        title: 'startDate',
+        title: '标题',
+        dataIndex: 'title',
+    }, {
+        title: '介绍',
+        dataIndex: 'description',
+    },  {
+        title: '开始时间',
         dataIndex: 'startDate',
-    },{
-        title: 'endDate',
+    }, {
+        title: '结束时间',
         dataIndex: 'endDate',
     },{
-        title: 'status',
+        title: '状态',
         dataIndex: 'status',
-    },  {
+    }, {
         title: 'Action',
         scopedSlots: {customRender: 'action'},
     }];

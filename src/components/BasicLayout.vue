@@ -16,61 +16,34 @@
                     :inlineCollapsed="collapsed"
             >
                 <a-sub-menu key="sub1">
-                    <span slot="title"><a-icon type="pie-chart"/><span>仪表盘</span></span>
+                    <span slot="title"><a-icon type="pie-chart"/><span>数据</span></span>
                     <a-menu-item key="1">
-                        <router-link to="/">分析</router-link>
+                        <router-link to="/">首页</router-link>
                     </a-menu-item>
                     <a-menu-item key="2">
-                        <router-link to="/about">关于</router-link>
-                    </a-menu-item>
-                    <a-menu-item key="3">
                         <router-link to="/region">地区</router-link>
                     </a-menu-item>
-                    <a-menu-item key="4">
+                    <a-menu-item key="3">
                         <router-link to="/country">国家</router-link>
                     </a-menu-item>
-                    <a-menu-item key="5">
+                    <a-menu-item key="4">
                         <router-link to="/department">团队</router-link>
                     </a-menu-item>
-                    <a-menu-item key="6">
+                    <a-menu-item key="5">
                         <router-link to="/task">任务</router-link>
                     </a-menu-item>
                 </a-sub-menu>
                 <a-sub-menu key="sub2">
-                    <span slot="title"><a-icon type="form"/><span>表单页</span></span>
-                    <a-menu-item key="7">基础表单</a-menu-item>
-                    <a-menu-item key="8">分布表单</a-menu-item>
-                </a-sub-menu>
-                <a-sub-menu key="sub3">
-                    <span slot="title"><a-icon type="table"/><span>列表页</span></span>
-
-                    <a-menu-item key="9">卡片列表</a-menu-item>
-                    <a-menu-item key="10">搜索列表</a-menu-item>
-                </a-sub-menu>
-                <a-sub-menu key="sub4">
-                    <span slot="title"><a-icon type="profile"/><span>详情页</span></span>
-                    <a-menu-item key="11">基础详情页</a-menu-item>
-                    <a-menu-item key="12"> 高级详情页</a-menu-item>
-                </a-sub-menu>
-                <a-sub-menu key="sub5">
-                    <span slot="title"><a-icon type="down-circle"/><span>结果页</span></span>
-                    <a-menu-item key="13">成功</a-menu-item>
-                    <a-menu-item key="14">失败</a-menu-item>
-                </a-sub-menu>
-                <a-sub-menu key="sub6">
-                    <span slot="title"><a-icon type="warning"/><span>异常页</span></span>
-                    <a-menu-item key="15">403</a-menu-item>
-                    <a-menu-item key="16">404</a-menu-item>
-                    <a-menu-item key="17">500</a-menu-item>
-                </a-sub-menu>
-                <a-sub-menu key="sub7">
-                    <span slot="title"><a-icon type="user"/><span>个人页</span></span>
-                    <a-menu-item key="18">个人中心</a-menu-item>
-                    <a-menu-item key="19">个人设置</a-menu-item>
-                </a-sub-menu>
-                <a-sub-menu key="sub8">
-                    <span slot="title"><a-icon type="slack"/><span>其他组件</span></span>
-                    <a-menu-item key="20">业务布局</a-menu-item>
+                    <span slot="title"><a-icon type="form"/><span>管理</span></span>
+                    <a-menu-item key="6">
+                        <router-link to="/about">用户管理</router-link>
+                    </a-menu-item>
+                    <a-menu-item key="7">
+                        <router-link to="/about">权限管理</router-link>
+                    </a-menu-item>
+                    <a-menu-item key="8">
+                        <router-link to="/about">关于</router-link>
+                    </a-menu-item>
                 </a-sub-menu>
             </a-menu>
         </a-layout-sider>
@@ -84,22 +57,31 @@
                                 @click="()=> collapsed = !collapsed"
                         />
                         <div style="float: right;margin: 0 10px">
-                            <span class="action"><a-icon type="question-circle-o"/></span>
+                            <a href="https://www.baidu.com/"><span class="action"><a-icon
+                                    type="question-circle-o"/></span></a>
                             <span class="action"><a-icon type="bell"/></span>
                             <a-dropdown>
                                 <a class="action" href="#">
                                     <a-avatar class="avatar" size="small" style="margin-right: 12px"
-                                              src="https://axure-file.lanhuapp.com/6b1d2547-b791-4d62-adce-a4881352a46d__862eb7a7eeb6b7490153498e634cb182" />天野远子
+                                              src="https://axure-file.lanhuapp.com/6b1d2547-b791-4d62-adce-a4881352a46d__862eb7a7eeb6b7490153498e634cb182"/>
+                                    天野远子
                                 </a>
                                 <a-menu slot="overlay">
                                     <a-menu-item key="0">
-                                        <a href="http://javayuan.cn/"><a-icon type="home"/> 个人中心 </a>
+                                        <a href="http://javayuan.cn/">
+                                            <a-icon type="home"/>
+                                            个人中心 </a>
                                     </a-menu-item>
                                     <a-menu-item key="1">
-                                        <a href="http://www.baidu.com/"><a-icon type="setting"/> 账户设置 </a>
+                                        <a href="http://www.baidu.com/">
+                                            <a-icon type="setting"/>
+                                            账户设置 </a>
                                     </a-menu-item>
-                                    <a-menu-divider />
-                                    <a-menu-item key="3"><a-icon type="logout"/> 退出登录</a-menu-item>
+                                    <a-menu-divider/>
+                                    <a-menu-item key="3">
+                                        <a-icon type="logout"/>
+                                        退出登录
+                                    </a-menu-item>
                                 </a-menu>
                             </a-dropdown>
                         </div>
@@ -193,7 +175,8 @@
         padding: 16px 32px 0;
         border-top: 1px solid #e8e8e8;
     }
-    .action{
+
+    .action {
         padding: 0 12px;
     }
 
