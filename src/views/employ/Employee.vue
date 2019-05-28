@@ -1,16 +1,16 @@
 <template>
     <div>
         <div class="home">
-            <h1 class="title">Country</h1>
-            <p>Country页用于向用户收集或验证信息，基础表单常见于数据项较少的表单场景。</p>
+            <h1 class="title">Department</h1>
+            <p>Department页用于向用户收集或验证信息，基础表单常见于数据项较少的表单场景。</p>
         </div>
         <div class="content">
             <div>
-                <a-button type="primary" @click="addClick">
+                <a-button type="primary" @click="addClick()">
                     <a-icon type="plus"/>
                     新建
                 </a-button>
-                <CountryModal ref="modal" @ok="handleOk"/>
+                <EmployModal ref="modal" @ok="handleOk"/>
             </div>
             <a-table :columns="columns" :dataSource="data" rowKey="id">
                 <div slot="action" slot-scope="text">
@@ -29,53 +29,69 @@
 
 <script>
 
-    import CountryModal from "./CountryModal";
+    import EmployModal from "./EmployModal";
 
     const columns = [{
-        title: 'ID',
+        title: 'id',
         dataIndex: 'id',
     }, {
-        title: '国家名字',
-        dataIndex: 'countryName',
+        title: '登录名',
+        dataIndex: 'login',
     }, {
-        title: '地区',
-        dataIndex: 'regionName',
+        title: '名字',
+        dataIndex: 'firstName',
+    }, {
+        title: '姓氏',
+        dataIndex: 'lastName',
+    }, {
+        title: '邮箱',
+        dataIndex: 'email',
+    }, {
+        title: '联系方式',
+        dataIndex: 'phoneNumber',
+    }, {
+        title: '薪资',
+        dataIndex: 'salary',
+    }, {
+        title: '团队',
+        dataIndex: 'departmentName',
     }, {
         title: 'Action',
         scopedSlots: {customRender: 'action'},
     }];
 
     export default {
-        name: "country",
-        components: {CountryModal},
+        name: "Employee",
+        components: {EmployModal},
         data() {
             return {
-                data: [],
                 columns,
+                data: [],
             }
         },
         created() {
-            this.countryData();
+            this.employeeData();
         },
         methods: {
-            countryData: function () {
-                this.$api.country.getCountry().then(res => {
+            employeeData() {
+                this.$api.employ.getEmployee().then(res => {
                     this.data = res.data;
                 })
             },
             addClick() {
                 this.$refs.modal.add();
             },
-            updateClick: function (data) {
+
+            updateClick(data) {
                 this.$refs.modal.update(data);
             },
             deleteClick(key) {
-                this.$api.country.deleteCountry(key).then(() => {
-                    this.countryData()
+                this.$api.employ.deleteEmployee(key).then(() => {
+                    this.employeeData()
                 })
             },
             handleOk() {
-                this.countryData();
+                this.employeeData()
             }
 
         }

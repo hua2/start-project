@@ -52,6 +52,11 @@ export default new Router({
                     name: 'task',
                     component: () => import(/* webpackChunkName: "task" */ './views/task/Task.vue')
                 },
+                {
+                    path: 'employ',
+                    name: 'employ',
+                    component: () => import(/* webpackChunkName: "employ" */ './views/employ/Employee.vue')
+                },
             ]
         },
         {

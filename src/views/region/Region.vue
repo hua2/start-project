@@ -54,24 +54,24 @@
             this.loadData();
         },
         methods: {
+            regionData() {
+                this.$api.region.getRegion().then(res => {
+                    this.data = res.data;
+                })
+            },
             deleteClick(key) {
                 this.$api.region.deleteRegion(key).then(() => {
-                    this.loadData()
+                    this.regionData()
                 })
             },
             updateClick(data) {
                 this.$refs.modal.update(data);
             },
-            loadData() {
-                this.$api.region.regionData().then(res => {
-                    this.data = res.data;
-                })
-            },
             addClick() {
                 this.$refs.modal.add();
             },
             handleOk() {
-                this.loadData();
+                this.regionData();
             }
         }
     }

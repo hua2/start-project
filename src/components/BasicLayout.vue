@@ -32,16 +32,19 @@
                     <a-menu-item key="5">
                         <router-link to="/task">任务</router-link>
                     </a-menu-item>
+                    <a-menu-item key="6">
+                        <router-link to="/employ">人员</router-link>
+                    </a-menu-item>
                 </a-sub-menu>
                 <a-sub-menu key="sub2">
                     <span slot="title"><a-icon type="form"/><span>管理</span></span>
-                    <a-menu-item key="6">
+                    <a-menu-item key="7">
                         <router-link to="/about">用户管理</router-link>
                     </a-menu-item>
-                    <a-menu-item key="7">
+                    <a-menu-item key="8">
                         <router-link to="/about">权限管理</router-link>
                     </a-menu-item>
-                    <a-menu-item key="8">
+                    <a-menu-item key="9">
                         <router-link to="/about">关于</router-link>
                     </a-menu-item>
                 </a-sub-menu>
