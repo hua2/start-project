@@ -39,10 +39,10 @@
                 <a-sub-menu key="sub2">
                     <span slot="title"><a-icon type="form"/><span>管理</span></span>
                     <a-menu-item key="7">
-                        <router-link to="/about">用户管理</router-link>
+                        <router-link to="/userManage">用户管理</router-link>
                     </a-menu-item>
                     <a-menu-item key="8">
-                        <router-link to="/about">权限管理</router-link>
+                        <router-link to="/permission">权限管理</router-link>
                     </a-menu-item>
                     <a-menu-item key="9">
                         <router-link to="/about">关于</router-link>

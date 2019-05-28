@@ -1,13 +1,16 @@
 <template>
     <div>
         <div class="home">
-            <h1 class="title">Region</h1>
-            <p>Region页用于向用户收集或验证信息，基础表单常见于数据项较少的表单场景。</p>
+            <h1 class="title">UserManage</h1>
+            <p>UserManage页用于向用户收集或验证信息，基础表单常见于数据项较少的表单场景。</p>
         </div>
         <div class="content">
             <div>
-                <a-button type="primary" @click="addClick"><a-icon type="plus" />新建</a-button>
-                <RegionModal ref="modal" @ok="handleOk"/>
+                <a-button type="primary" @click="addClick">
+                    <a-icon type="plus"/>
+                    新建
+                </a-button>
+                <UserModal ref="modal" @ok="handleOk"/>
             </div>
 
             <a-table :columns="columns" :dataSource="data" rowKey="id">
@@ -26,23 +29,42 @@
 
 </template>
 <script>
-    import RegionModal from "@/views/region/RegionModal";
+    import UserModal from "./UserModal";
 
     const columns = [{
         title: 'ID',
         dataIndex: 'id',
     }, {
-        title: '地区名字',
-        dataIndex: 'regionName',
+        title: '登录',
+        dataIndex: 'login',
     }, {
+        title: '邮箱',
+        dataIndex: 'email',
+    },  {
+        title: '语言',
+        dataIndex: 'langKey',
+    },  {
+        title: '角色',
+        dataIndex: 'authorities',
+    }, {
+        title: '创建时间',
+        dataIndex: 'createdDate',
+    },  {
+        title: '修改人',
+        dataIndex: 'lastModifiedBy',
+    },   {
+        title: '最后修改时间',
+        dataIndex: 'lastModifiedDate',
+    },  {
         title: 'Action',
         scopedSlots: {customRender: 'action'},
     }];
 
 
+
     export default {
-        name: 'region',
-        components: {RegionModal},
+        name: 'userManage',
+        components: {UserModal},
         data() {
             return {
                 data: [],
@@ -51,17 +73,17 @@
             }
         },
         created() {
-            this.regionData();
+            this.userData();
         },
         methods: {
-            regionData() {
-                this.$api.region.getRegion().then(res => {
+            userData() {
+                this.$api.userManage.getUsers().then(res => {
                     this.data = res.data;
                 })
             },
             deleteClick(key) {
-                this.$api.region.deleteRegion(key).then(() => {
-                    this.regionData()
+                this.$api.userManage.deleteUsers(key).then(() => {
+                    this.userData()
                 })
             },
             updateClick(data) {
@@ -71,7 +93,7 @@
                 this.$refs.modal.add();
             },
             handleOk() {
-                this.regionData();
+                this.userData();
             }
         }
     }

@@ -9,6 +9,7 @@ import country from '@/api/country';
 import department from '@/api/department';
 import task from '@/api/task';
 import employ from '@/api/employ';
+import userManage from '@/api/userManage';
 // 其他模块的接口……
 
 // 导出接口
@@ -19,5 +20,6 @@ export default {
     department,
     task,
     employ,
+    userManage
     // ……
 }
