@@ -65,12 +65,12 @@
                 </a-select>
             </a-form-item>
             <a-form-item
+                    label="角色"
             >
                 <a-select
-                    label="角色"
                         v-decorator="[
           'authorities',
-          {rules: [{ required: true, message: 'Please select your departmentName!' }]}
+          {rules: [{ required: true, message: 'Please select your authorities!' }]}
         ]"
                         placeholder="Select a option and change input text above"
                 >
