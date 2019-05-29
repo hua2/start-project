@@ -74,12 +74,12 @@
             >
                 <a-select
                         v-decorator="[
-          'departmentName',
+          'departmentId',
           {rules: [{ required: true, message: 'Please select your departmentName!' }]}
         ]"
                         placeholder="Select a option and change input text above"
                 >
-                    <a-select-option v-for="(x,index) in depart" :key="index" :value="x.id">
+                    <a-select-option v-for="(x,index) in depart" :key="index">
                         {{x.departmentName}}
                     </a-select-option>
                 </a-select>
@@ -119,7 +119,7 @@
                                 email: values.email,
                                 phoneNumber: values.phoneNumber,
                                 salary:values.salary,
-                                departmentName: values.departmentName}).then(() => {
+                                departmentId: values.departmentId}).then(() => {
                                 this.ok();
                                 this.$message.success('创建成功');
                             }).catch(() => {
@@ -133,7 +133,7 @@
                                 email: values.email,
                                 phoneNumber: values.phoneNumber,
                                 salary:values.salary,
-                                departmentName: values.departmentName,
+                                departmentId: values.departmentId,
                                 id: this.id}).then(() => {
                                 this.ok();
                                 this.$message.success('修改成功');
@@ -153,7 +153,7 @@
                 this.visible = false
             },
             add() {
-                this.update({id: undefined, login: '', firstName: '', lastName: '', email: '', phoneNumber: '', salary:'',departmentName:''})
+                this.update({id: undefined, login: '', firstName: '', lastName: '', email: '', phoneNumber: '', salary:'',departmentId:''})
             },
             update(data) {
                 this.visible = true;
@@ -161,7 +161,7 @@
                 this.form.setFieldsValue({
                     login: data.login, firstName: data.firstName,
                     lastName: data.lastName, email: data.email,
-                    phoneNumber: data.phoneNumber, salary:data.salary,departmentName:data.departmentName})
+                    phoneNumber: data.phoneNumber, salary:data.salary,departmentId:data.departmentId})
             },
             departmentData(){
                 this.$api.department.getDepartments().then(res => {

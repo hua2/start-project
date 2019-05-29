@@ -52,25 +52,30 @@
             <a-form-item
                     label="语言"
             >
-                <a-input
+                <a-select
                         v-decorator="[
           'langKey',
-          {rules: [{ required: true, message: 'Please input your langKey!' }]}
+          {rules: [{ required: true, message: 'Please select your langKey!' }]}
         ]"
-                />
+                        placeholder="Select a option and change input text above"
+                >
+                    <a-select-option v-for="(x,index) in language" :key="index" :value="x.select">
+                        {{x.name}}
+                    </a-select-option>
+                </a-select>
             </a-form-item>
             <a-form-item
-                    label="角色"
             >
                 <a-select
+                    label="角色"
                         v-decorator="[
           'authorities',
           {rules: [{ required: true, message: 'Please select your departmentName!' }]}
         ]"
                         placeholder="Select a option and change input text above"
                 >
-                    <a-select-option v-for="(x,index) in roles" :key="index" :value="x.id">
-                        {{x.authorities}}
+                    <a-select-option v-for="(x,index) in roles" :key="index">
+                        {{x}}
                     </a-select-option>
                 </a-select>
             </a-form-item>
@@ -86,6 +91,7 @@
                 visible: false,
                 confirmLoading: false,
                 id: undefined,
+                language:[{name:'中文（简体）',select:'zh-cn'},{name: 'English',select:'en'}],
                 roles:['ROLE_ADMIN', 'ROLE_USER']
             }
         },
