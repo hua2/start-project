@@ -11,6 +11,8 @@
         >
             <a-form-item
                     label="标题"
+                    :labelCol="{span:3}"
+                    :wrapperCol="{span:21}"
             >
                 <a-input
                         v-decorator="[
@@ -21,6 +23,8 @@
             </a-form-item>
             <a-form-item
                     label="介绍"
+                    :labelCol="{span:3}"
+                    :wrapperCol="{span:21}"
             >
                 <a-input
                         v-decorator="[
@@ -31,6 +35,8 @@
             </a-form-item>
             <a-form-item
                     label="状态"
+                    :labelCol="{span:3}"
+                    :wrapperCol="{span:5}"
             >
                 <a-select
                         v-decorator="[
@@ -39,7 +45,7 @@
         ]"
                         placeholder="Select a option and change input text above"
                 >
-                    <a-select-option v-for="(x,index) in status" :key="index"  :value="x.select">
+                    <a-select-option v-for="(x,index) in status" :key="index" :value="x.select">
                         {{x.name}}
                     </a-select-option>
                 </a-select>
@@ -51,23 +57,22 @@
 <script>
     export default {
         name: "TaskModal",
-        data(){
-            return{
+        data() {
+            return {
                 visible: false,
                 confirmLoading: false,
                 id: undefined,
-                status: [{name:'已发布',select:'RELEASING'} ,
-                    {name:'暂停中',select:'PAUSING'} ,
-                    {name:'工作中',select:'WORKING'},
-                    {name:'已完成',select:'ENDING'}]
+                form: this.$form.createForm(this),
+                status: [{name: '已发布', select: 'RELEASING'},
+                    {name: '暂停中', select: 'PAUSING'},
+                    {name: '工作中', select: 'WORKING'},
+                    {name: '已完成', select: 'ENDING'}]
             }
         },
-        beforeCreate() {
-            this.form = this.$form.createForm(this);
-        },
-        methods:{
+        methods: {
             handleOk() {
-                this.form.validateFields((err, values) => {
+                const {form: {validateFields}} = this;
+                validateFields((err, values) => {
                     if (!err) {
                         console.log('Received values of form: ', values);
                         this.confirmLoading = true;
@@ -87,7 +92,7 @@
                                 title: values.title,
                                 description: values.description,
                                 status: values.status,
-                                id:this.id,
+                                id: this.id,
                             }).then(() => {
                                 this.ok();
                                 this.$message.success('创建成功');
@@ -108,13 +113,16 @@
             handleCancel() {
                 this.visible = false
             },
-            add(){
-                this.update({title: '', description: '',id:undefined,status: ''})
+            add() {
+                this.update({title: '', description: '', id: undefined, status: ''})
             },
-            update(data){
+            update(data) {
                 this.visible = true;
                 this.id = data.id;
-                this.form.setFieldsValue({title: data.title, description: data.description,status: data.status,})
+                const {form: {setFieldsValue}} = this;
+                this.$nextTick(() => {
+                    setFieldsValue({title: data.title, description: data.description, status: data.status})
+                });
             }
         }
     }

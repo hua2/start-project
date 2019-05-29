@@ -81,7 +81,7 @@
                                             账户设置 </a>
                                     </a-menu-item>
                                     <a-menu-divider/>
-                                    <a-menu-item key="3">
+                                    <a-menu-item key="3" @click="exitLayout">
                                         <a-icon type="logout"/>
                                         退出登录
                                     </a-menu-item>
@@ -117,6 +117,8 @@
 </template>
 <script>
 
+    import router from '@/router';
+    
     export default {
         components: {},
         data() {
@@ -132,8 +134,19 @@
                     breadcrumbName: '仪表盘'
                 }],
             }
-        }
-    }
+        },
+        methods:{
+            exitLayout(){
+                localStorage.removeItem('token');
+                sessionStorage.removeItem('token');
+                router.replace({
+                    path: '/session/login',
+                    query: {
+                        redirect: router.currentRoute.fullPath
+                    }
+                });
+            }
+        }}
 
 
 </script>

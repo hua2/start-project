@@ -36,7 +36,6 @@
             return {
                 columns,
                 data: [],
-
             }
         },
         created() {
