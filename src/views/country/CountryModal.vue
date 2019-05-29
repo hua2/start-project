@@ -103,7 +103,7 @@
                 this.form.setFieldsValue({countryName: data.countryName, regionId:data.regionId})
             },
             regionData: function () {
-                this.$api.region.regionData().then(res => {
+                this.$api.region.getRegion().then(res => {
                     this.regions = res.data;
                 })
             },
