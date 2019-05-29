@@ -20,6 +20,6 @@ export default {
     department,
     task,
     employ,
-    userManage
+    userManage,
     // ……
 }

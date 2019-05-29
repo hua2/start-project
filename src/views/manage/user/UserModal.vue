@@ -68,13 +68,14 @@
                     label="角色"
             >
                 <a-select
+                        mode="multiple"
                         v-decorator="[
           'authorities',
           {rules: [{ required: true, message: 'Please select your authorities!' }]}
         ]"
                         placeholder="Select a option and change input text above"
                 >
-                    <a-select-option v-for="(x,index) in roles" :key="index">
+                    <a-select-option v-for="(x,index) in roles" :key="index" :value="x">
                         {{x}}
                     </a-select-option>
                 </a-select>
@@ -147,27 +148,13 @@
                 this.visible = false
             },
             add() {
-                this.update({
-                    id: undefined,
-                    login: '',
-                    firstName: '',
-                    lastName: '',
-                    email: '',
-                    langKey: '',
-                    authorities: '',
-                })
+                this.update({id: undefined, login: '', firstName: '', lastName: '', email: '', langKey: '', authorities: ''})
             },
 
             update(data) {
                 this.visible = true;
                 this.id = data.id;
-                this.form.setFieldsValue({
-                    login: data.login,
-                    firstName: data.firstName,
-                    lastName: data.lastName,
-                    email: data.email,
-                    langKey: data.langKey,
-                    authorities: data.authorities
+                this.form.setFieldsValue({login: data.login, firstName: data.firstName, lastName: data.lastName, email: data.email, langKey: data.langKey, authorities: data.authorities
                 })
             }
         }

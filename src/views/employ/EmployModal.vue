@@ -79,7 +79,7 @@
         ]"
                         placeholder="Select a option and change input text above"
                 >
-                    <a-select-option v-for="(x,index) in depart" :key="index">
+                    <a-select-option v-for="(x,index) in depart" :key="index" :value="x.id">
                         {{x.departmentName}}
                     </a-select-option>
                 </a-select>
@@ -158,14 +158,12 @@
             update(data) {
                 this.visible = true;
                 this.id = data.id;
-                this.form.setFieldsValue({
-                    login: data.login, firstName: data.firstName,
-                    lastName: data.lastName, email: data.email,
-                    phoneNumber: data.phoneNumber, salary:data.salary,departmentId:data.departmentId})
+                this.form.setFieldsValue({login: data.login, firstName: data.firstName, lastName: data.lastName, email: data.email, phoneNumber: data.phoneNumber, salary:data.salary,departmentId:data.departmentId})
             },
             departmentData(){
                 this.$api.department.getDepartments().then(res => {
                     this.depart= res.data;
+                    console.log(res.data)
                 })
             },
 

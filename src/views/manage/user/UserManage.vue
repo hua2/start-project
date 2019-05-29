@@ -7,15 +7,13 @@
         <div class="content">
             <div>
                 <a-button type="primary" @click="addClick">
-                    <a-icon type="plus"/>
-                    新建
-                </a-button>
+                    <a-icon type="plus"/>新建</a-button>
                 <UserModal ref="modal" @ok="handleOk"/>
             </div>
 
             <a-table :columns="columns" :dataSource="data" rowKey="id">
                 <div slot="action" slot-scope="text">
-                    <a-popconfirm title="Are you sure delete this task?" @confirm="deleteClick(text.id)" okText="Yes"
+                    <a-popconfirm title="Are you sure delete this task?" @confirm="deleteClick(text.login)" okText="Yes"
                                   cancelText="No">
                         <a href="javascript:">Delete</a>
                     </a-popconfirm>
@@ -83,7 +81,7 @@
             },
             deleteClick(key) {
                 this.$api.userManage.deleteUsers(key).then(() => {
-                    this.userData()
+                    this.userData();
                 })
             },
             updateClick(data) {

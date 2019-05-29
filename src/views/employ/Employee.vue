@@ -76,6 +76,7 @@
             employeeData() {
                 this.$api.employ.getEmployee().then(res => {
                     this.data = res.data;
+                    console.error(res.data)
                 })
             },
             addClick() {

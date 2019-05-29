@@ -56,7 +56,7 @@
                 visible: false,
                 confirmLoading: false,
                 id: undefined,
-                status: [{name:'RELEASING',select:'已发布'} ,
+                status: [{name:'已发布',select:'RELEASING'} ,
                     {name:'暂停中',select:'PAUSING'} ,
                     {name:'工作中',select:'WORKING'},
                     {name:'已完成',select:'ENDING'}]
