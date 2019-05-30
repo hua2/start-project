@@ -71,19 +71,15 @@
                                 </a>
                                 <a-menu slot="overlay">
                                     <a-menu-item key="0">
-                                        <a href="http://javayuan.cn/">
-                                            <a-icon type="home"/>
-                                            个人中心 </a>
+                                        <a href="http://javayuan.cn/"><a-icon type="home"/>个人中心 </a>
                                     </a-menu-item>
-                                    <a-menu-item key="1">
-                                        <a href="http://www.baidu.com/">
-                                            <a-icon type="setting"/>
-                                            账户设置 </a>
+                                    <a-menu-item key="1"  @click="changePwd">
+                                        <a href="#"><a-icon type="setting"/>账号设置 </a>
+                                        <Info ref="modal"/>
                                     </a-menu-item>
                                     <a-menu-divider/>
                                     <a-menu-item key="3" @click="exitLayout">
-                                        <a-icon type="logout"/>
-                                        退出登录
+                                        <a-icon type="logout"/>退出登录
                                     </a-menu-item>
                                 </a-menu>
                             </a-dropdown>
@@ -118,9 +114,10 @@
 <script>
 
     import router from '@/router';
+    import Info from "../views/user/Info";
     
     export default {
-        components: {},
+        components: {Info},
         data() {
             const {lang} = this.$route.params;
             return {
@@ -145,6 +142,9 @@
                         redirect: router.currentRoute.fullPath
                     }
                 });
+            },
+            changePwd(){
+                this.$refs.modal.updatePwd();
             }
         }}
 
