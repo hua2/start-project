@@ -11,6 +11,8 @@
         >
             <a-form-item
                     label="登录"
+                    :labelCol="{span:4}"
+                    :wrapperCol="{span:20}"
             >
                 <a-input
                         v-decorator="[
@@ -21,6 +23,8 @@
             </a-form-item>
             <a-form-item
                     label="名字"
+                    :labelCol="{span:4}"
+                    :wrapperCol="{span:20}"
             >
                 <a-input
                         v-decorator="[
@@ -31,6 +35,8 @@
             </a-form-item>
             <a-form-item
                     label="姓氏"
+                    :labelCol="{span:4}"
+                    :wrapperCol="{span:20}"
             >
                 <a-input
                         v-decorator="[
@@ -41,6 +47,8 @@
             </a-form-item>
             <a-form-item
                     label="邮箱"
+                    :labelCol="{span:4}"
+                    :wrapperCol="{span:20}"
             >
                 <a-input
                         v-decorator="[
@@ -51,6 +59,8 @@
             </a-form-item>
             <a-form-item
                     label="语言"
+                    :labelCol="{span:4}"
+                    :wrapperCol="{span:6}"
             >
                 <a-select
                         v-decorator="[
@@ -66,6 +76,8 @@
             </a-form-item>
             <a-form-item
                     label="角色"
+                    :labelCol="{span:4}"
+                    :wrapperCol="{span:6}"
             >
                 <a-select
                         mode="multiple"
@@ -93,11 +105,9 @@
                 confirmLoading: false,
                 id: undefined,
                 language:[{name:'中文（简体）',select:'zh-cn'},{name: 'English',select:'en'}],
-                roles:['ROLE_ADMIN', 'ROLE_USER']
+                roles:['ROLE_ADMIN', 'ROLE_USER'],
+                form: this.$form.createForm(this)
             }
-        },
-        beforeCreate() {
-            this.form = this.$form.createForm(this);
         },
         methods: {
             handleOk() {
@@ -154,8 +164,10 @@
             update(data) {
                 this.visible = true;
                 this.id = data.id;
-                this.form.setFieldsValue({login: data.login, firstName: data.firstName, lastName: data.lastName, email: data.email, langKey: data.langKey, authorities: data.authorities
-                })
+                const {form :{setFieldsValue}} =this;
+                this.$nextTick(()=>{
+                    setFieldsValue({login: data.login, firstName: data.firstName, lastName: data.lastName, email: data.email, langKey: data.langKey, authorities: data.authorities})
+               });
             }
         }
     }

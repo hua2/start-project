@@ -9,8 +9,8 @@ import axios from '@/utils/http'; // 导入http中创建的axios实例
 
 const region = {
     // 国家  (定义调用接口的方法，根据需求传参，并返回数据)
-    getRegion () {
-        return axios.get(`${base.api}/regions`)
+    getRegion (params) {
+        return axios.get(`${base.api}/regions`,{params:params})
     },
     createRegion (data) {
         return axios.post(`${base.api}/regions`,data)

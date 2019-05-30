@@ -11,6 +11,8 @@
         >
             <a-form-item
                     label="登录名"
+                    :labelCol="{span:4}"
+                    :wrapperCol="{span:20}"
             >
                 <a-input
                         v-decorator="[
@@ -21,6 +23,8 @@
             </a-form-item>
             <a-form-item
                     label="名字"
+                    :labelCol="{span:4}"
+                    :wrapperCol="{span:20}"
             >
                 <a-input
                         v-decorator="[
@@ -31,6 +35,8 @@
             </a-form-item>
             <a-form-item
                     label="姓氏"
+                    :labelCol="{span:4}"
+                    :wrapperCol="{span:20}"
             >
                 <a-input
                         v-decorator="[
@@ -41,6 +47,8 @@
             </a-form-item>
             <a-form-item
                     label="邮箱"
+                    :labelCol="{span:4}"
+                    :wrapperCol="{span:20}"
             >
                 <a-input
                         v-decorator="[
@@ -51,6 +59,8 @@
             </a-form-item>
             <a-form-item
                     label="联系方式"
+                    :labelCol="{span:4}"
+                    :wrapperCol="{span:20}"
             >
                 <a-input
                         v-decorator="[
@@ -61,6 +71,8 @@
             </a-form-item>
             <a-form-item
                     label="薪资"
+                    :labelCol="{span:4}"
+                    :wrapperCol="{span:20}"
             >
                 <a-input
                         v-decorator="[
@@ -71,6 +83,8 @@
             </a-form-item>
             <a-form-item
                     label="团队"
+                    :labelCol="{span:4}"
+                    :wrapperCol="{span:6}"
             >
                 <a-select
                         v-decorator="[
@@ -97,11 +111,10 @@
                 confirmLoading: false,
                 id: undefined,
                 depart:[],
+                form: this.$form.createForm(this)
             }
         },
-        beforeCreate() {
-            this.form = this.$form.createForm(this);
-        },
+
         created() {
             this.departmentData();
         },
@@ -158,7 +171,10 @@
             update(data) {
                 this.visible = true;
                 this.id = data.id;
-                this.form.setFieldsValue({login: data.login, firstName: data.firstName, lastName: data.lastName, email: data.email, phoneNumber: data.phoneNumber, salary:data.salary,departmentId:data.departmentId})
+                const {form: {setFieldsValue}} = this;
+                this.$nextTick(() => {
+                    setFieldsValue({login: data.login, firstName: data.firstName, lastName: data.lastName, email: data.email, phoneNumber: data.phoneNumber, salary: data.salary, departmentId: data.departmentId})
+                });
             },
             departmentData(){
                 this.$api.department.getDepartments().then(res => {

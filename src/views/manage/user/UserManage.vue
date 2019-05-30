@@ -11,7 +11,13 @@
                 <UserModal ref="modal" @ok="handleOk"/>
             </div>
 
-            <a-table :columns="columns" :dataSource="data" rowKey="id">
+            <a-table :columns="columns"
+                     :dataSource="data"
+                     rowKey="id"
+                     :pagination="pagination"
+                     :loading="loading"
+                     @change="handleTableChange"
+            >
                 <div slot="action" slot-scope="text">
                     <a-popconfirm title="Are you sure delete this task?" @confirm="deleteClick(text.login)" okText="Yes"
                                   cancelText="No">
@@ -31,27 +37,35 @@
 
     const columns = [{
         title: 'ID',
+        sorter: true,
         dataIndex: 'id',
     }, {
         title: '登录',
+        sorter: true,
         dataIndex: 'login',
     }, {
         title: '邮箱',
+        sorter: true,
         dataIndex: 'email',
     },  {
         title: '语言',
+        sorter: true,
         dataIndex: 'langKey',
     },  {
         title: '角色',
+        sorter: true,
         dataIndex: 'authorities',
     }, {
         title: '创建时间',
+        sorter: true,
         dataIndex: 'createdDate',
     },  {
         title: '修改人',
+        sorter: true,
         dataIndex: 'lastModifiedBy',
     },   {
         title: '最后修改时间',
+        sorter: true,
         dataIndex: 'lastModifiedDate',
     },  {
         title: 'Action',
@@ -68,16 +82,41 @@
                 data: [],
                 columns,
                 visible: false,
+                loading: false,
+                pagination: {
+                    pageSize: 5,
+                    current: 1,
+                    total: 0,
+                    sort: 'id,asc',
+                }
             }
         },
         created() {
             this.userData();
         },
         methods: {
-            userData() {
-                this.$api.userManage.getUsers().then(res => {
+            handleTableChange(pagination, filters, sorter) {
+                this.pagination.current = pagination.current;
+                this.pagination.pageSize = pagination.pageSize;
+                if (sorter.field && sorter.order) {
+                    this.pagination.sort = `${sorter.columnKey},${sorter.order}`;
+                } else {
+                    this.pagination.sort = ''
+                }
+                this.userData();
+            },
+            userData () {
+                this.loading = true;
+                this.$api.userManage.getUsers({
+                    size: this.pagination.pageSize,
+                    page: this.pagination.current - 1,
+                    sort: this.pagination.sort.replace(/end/, '')
+                }).then(res => {
+                    const total = res.headers['x-total-count'];
+                    this.pagination.total = Number(total);
                     this.data = res.data;
-                })
+                    this.loading = false
+                }).catch(() => this.loading = false);
             },
             deleteClick(key) {
                 this.$api.userManage.deleteUsers(key).then(() => {

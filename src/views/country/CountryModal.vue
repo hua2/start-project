@@ -11,6 +11,8 @@
         >
             <a-form-item
                     label="国家名字"
+                    :labelCol="{span:4}"
+                    :wrapperCol="{span:20}"
             >
                 <a-input
                         v-decorator="[
@@ -21,6 +23,8 @@
             </a-form-item>
             <a-form-item
                     label="地区"
+                    :labelCol="{span:4}"
+                    :wrapperCol="{span:6}"
             >
                 <a-select
                         v-decorator="[
@@ -41,22 +45,19 @@
 <script>
     export default {
         name: "CountryModal",
-        data(){
-            return{
+        data() {
+            return {
                 regions: [],
                 visible: false,
                 confirmLoading: false,
-                id: undefined
+                id: undefined,
+                form: this.$form.createForm(this),
             }
-        },
-        beforeCreate() {
-            this.form = this.$form.createForm(this);
         },
         created() {
             this.regionData();
-
         },
-        methods:{
+        methods: {
             handleOk() {
                 this.form.validateFields((err, values) => {
                     if (!err) {
@@ -65,7 +66,8 @@
                         if (!this.id) {
                             this.$api.country.createCountry({
                                 countryName: values.countryName,
-                                regionId:values.regionId}).then(() => {
+                                regionId: values.regionId
+                            }).then(() => {
                                 this.ok();
                                 this.$message.success('创建成功');
                             }).catch(() => {
@@ -75,7 +77,8 @@
                             this.$api.country.updateCountry({
                                 countryName: values.countryName,
                                 regionId: values.regionId,
-                                id: this.id}).then(() => {
+                                id: this.id
+                            }).then(() => {
                                 this.ok();
                                 this.$message.success('修改成功');
                             }).catch(() => {
@@ -95,12 +98,15 @@
                 this.visible = false
             },
             add() {
-                this.update({id: undefined, countryName: '',regionId:''})
+                this.update({id: undefined, countryName: '', regionId: ''})
             },
             update(data) {
                 this.visible = true;
                 this.id = data.id;
-                this.form.setFieldsValue({countryName: data.countryName, regionId:data.regionId})
+                const {form: {setFieldsValue}} = this;
+                this.$nextTick(() => {
+                    setFieldsValue({countryName: data.countryName, regionId: data.regionId})
+                });
             },
             regionData: function () {
                 this.$api.region.getRegion().then(res => {

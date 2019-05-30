@@ -9,8 +9,8 @@ import axios from '@/utils/http'; // 导入http中创建的axios实例
 
 const userManage = {
     // 用户管理 (定义调用接口的方法，根据需求传参，并返回数据)s
-    getUsers() {
-        return axios.get(`${base.api}/users`)
+    getUsers(params) {
+        return axios.get(`${base.api}/users`,{params:params})
     },
     deleteUsers(id) {
         return axios.delete(`${base.api}/users/${id}`)

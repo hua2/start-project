@@ -11,6 +11,8 @@
         >
             <a-form-item
                     label="团队名字"
+                    :labelCol="{span:4}"
+                    :wrapperCol="{span:20}"
             >
                 <a-input
                         v-decorator="[
@@ -21,6 +23,8 @@
             </a-form-item>
             <a-form-item
                     label="所属国家"
+                    :labelCol="{span:4}"
+                    :wrapperCol="{span:6}"
             >
                 <a-select
                         v-decorator="[
@@ -46,11 +50,9 @@
                 countries:[],
                 visible: false,
                 confirmLoading: false,
-                id: undefined
+                id: undefined,
+                form:this.$form.createForm(this)
             }
-        },
-        beforeCreate() {
-            this.form = this.$form.createForm(this);
         },
         created() {
             this.countryData();
@@ -100,7 +102,10 @@
             update(data) {
                 this.visible = true;
                 this.id = data.id;
-                this.form.setFieldsValue({departmentName: data.departmentName,countryId:data.countryId});
+                const {form: {setFieldsValue}} =this;
+                this.$nextTick(() => {
+                    setFieldsValue({departmentName: data.departmentName, countryId: data.countryId})
+                });
             },
             countryData(){
                 this.$api.country.getCountry().then(res => {

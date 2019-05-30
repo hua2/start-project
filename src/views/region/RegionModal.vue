@@ -16,7 +16,7 @@
             >
                 <a-input
                         v-decorator="[
-          'regionName',
+          'C',
           {rules: [{ required: true, message: 'Please input your regionName!' }]}
         ]"
                 />
@@ -32,11 +32,9 @@
             return {
                 visible: false,
                 confirmLoading: false,
-                id: undefined
+                id: undefined,
+                form: this.$form.createForm(this)
             }
-        },
-        beforeCreate() {
-            this.form = this.$form.createForm(this);
         },
         methods: {
             handleOk() {
@@ -81,7 +79,10 @@
             update(data) {
                 this.visible = true;
                 this.id = data.id;
-                this.form.setFieldsValue({regionName: data.regionName})
+                const {form:{setFieldsValue}} = this;
+                this.$nextTick(() =>{
+                    setFieldsValue({regionName: data.regionName})
+                });
             }
         }
     }
