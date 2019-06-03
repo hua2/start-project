@@ -75,7 +75,6 @@
                                     </a-menu-item>
                                     <a-menu-item key="1"  @click="changePwd">
                                         <a href="#"><a-icon type="setting"/>账号设置 </a>
-                                        <Info ref="modal"/>
                                     </a-menu-item>
                                     <a-menu-divider/>
                                     <a-menu-item key="3" @click="exitLayout">
@@ -114,10 +113,8 @@
 <script>
 
     import router from '@/router';
-    import Info from "../views/user/Info";
     
     export default {
-        components: {Info},
         data() {
             const {lang} = this.$route.params;
             return {
@@ -144,7 +141,7 @@
                 });
             },
             changePwd(){
-                this.$refs.modal.updatePwd();
+                this.$router.push('/info');
             }
         }}
 

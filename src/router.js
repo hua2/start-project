@@ -62,6 +62,11 @@ export default new Router({
                     name: 'userManage',
                     component: () => import(/* webpackChunkName: "userManage" */ './views/manage/user/UserManage.vue')
                 },
+                {
+                    path: 'info',
+                    name: 'info',
+                    component: () => import(/* webpackChunkName: "info" */ './views/info/Info.vue')
+                },
             ]
         },
         {

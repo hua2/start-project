@@ -15,8 +15,8 @@ const user = {
     getAccount () {
         return axios.get(`${base.api}/account`)
     },
-    changePwd () {
-        return axios.post(`${base.api}/account/change-password`)
+    changePwd (data) {
+        return axios.post(`${base.api}/account/change-password`,data)
     }
 };
 
