@@ -83,24 +83,19 @@
                 e.preventDefault();
                 this.form.validateFields((err, values) => {
                     if (!err) {
-                        console.log('Received values of form: ', values);
                         this.$api.user.login(values
                         ).then(res => {
                             // 执行某些操作
-                            if (values.rememberMe) {
-                                localStorage.setItem('token', res.data.id_token);
-                            } else {
-                                sessionStorage.setItem('token', res.data.id_token)
+                            if (res.data.id_token) {
+                                this.$store.commit('login',{token:res.data.id_token,rememberMe:values.rememberMe});
+                                this.$router.push('/home');
                             }
-                            this.$router.push('/home');
-                            console.log(res)
                         }).catch(()=>{
                             this.$message.error('用户名或密码错误');
                         })
                     }
                 });
             },
-
         },
     }
 </script>
