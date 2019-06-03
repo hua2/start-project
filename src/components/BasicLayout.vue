@@ -70,8 +70,8 @@
                                     天野远子
                                 </a>
                                 <a-menu slot="overlay">
-                                    <a-menu-item key="0">
-                                        <a href="http://javayuan.cn/"><a-icon type="home"/>个人中心 </a>
+                                    <a-menu-item key="0" @click="setClick">
+                                        <a href="#"><a-icon type="home"/>个人中心 </a>
                                     </a-menu-item>
                                     <a-menu-item key="1"  @click="changePwd">
                                         <a href="#"><a-icon type="setting"/>账号设置 </a>
@@ -142,6 +142,9 @@
             },
             changePwd(){
                 this.$router.push('/info');
+            },
+            setClick(){
+                this.$router.push('/setting');
             }
         }}
 
