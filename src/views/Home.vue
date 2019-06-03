@@ -2,10 +2,12 @@
     <div>
         <div class="home">
             <a-row type="flex" justify="space-around">
-                <a-col :span="4"> <a-avatar :size="64" icon="user" /></a-col>
+                <a-col :span="4">
+                    <a-avatar :size="64" icon="user"/>
+                </a-col>
                 <a-col :span="12" :pull="4">
                     <p>下午好，Ant Design，祝你开心每一天！</p>
-                    <p>交互设计师  |  蚂蚁金服－平台数据技术事业群－基础平台部－用户体验技术部－UED</p>
+                    <p>交互设计师 | 蚂蚁金服－平台数据技术事业群－基础平台部－用户体验技术部－UED</p>
                 </a-col>
                 <a-col>
                     <p>当前任务</p>
@@ -128,10 +130,11 @@
                         <a-list>
                             <a-list-item>
                                 <a-list-item-meta>
-                                    <a-avatar slot="avatar" icon="user" />
+                                    <a-avatar slot="avatar" icon="user"/>
                                     <div slot="title">
-                                        林东东 在  <a href="#" style="color: #1890ff;">Ant Design ProAnt Design ProAnt Design ProAnt Design ProAnt Design ProAnt Design Pro</a>工作中完成了
-                                        <a  href="#"  style="color: #1890ff;">留言任务</a>
+                                        林东东 在 <a href="#" style="color: #1890ff;">Ant Design ProAnt Design ProAnt Design
+                                        ProAnt Design ProAnt Design ProAnt Design Pro</a>工作中完成了
+                                        <a href="#" style="color: #1890ff;">留言任务</a>
                                     </div>
                                     <div slot="description">3天前</div>
                                 </a-list-item-meta>
@@ -140,8 +143,8 @@
                                 <a-list-item-meta>
                                     <a-avatar slot="avatar" icon="user"/>
                                     <div slot="title">
-                                        林东东 在  <a href="#" style="color: #1890ff;"> Ant De</a>工作中完成了
-                                        <a  href="#"  style="color: #1890ff;">留言任务留言任务留言任务留言任务留言任务</a>
+                                        林东东 在 <a href="#" style="color: #1890ff;"> Ant De</a>工作中完成了
+                                        <a href="#" style="color: #1890ff;">留言任务留言任务留言任务留言任务留言任务</a>
                                     </div>
                                     <div slot="description">3天前</div>
                                 </a-list-item-meta>
@@ -150,8 +153,8 @@
                                 <a-list-item-meta>
                                     <a-avatar slot="avatar" icon="user"/>
                                     <div slot="title">
-                                        林东东 在  <a href="#" style="color: #1890ff;">Ant Design Pro</a>工作中完成了
-                                        <a  href="#"  style="color: #1890ff;">留言</a>
+                                        林东东 在 <a href="#" style="color: #1890ff;">Ant Design Pro</a>工作中完成了
+                                        <a href="#" style="color: #1890ff;">留言</a>
                                     </div>
                                     <div slot="description">3天前</div>
                                 </a-list-item-meta>
@@ -170,21 +173,29 @@
                     <a-card title="工作列表" style="margin-bottom: 24px" :bordered="false" :body-style="{padding: 0}">
                         <a slot="extra">全部工作</a>
                         <div class="item-group">
-                            <p> <a-avatar slot="avatar" size="small" src="https://axure-file.lanhuapp.com/6b1d2547-b791-4d62-adce-a4881352a46d__862eb7a7eeb6b7490153498e634cb182"/>
+                            <p>
+                                <a-avatar slot="avatar" size="small"
+                                          src="https://axure-file.lanhuapp.com/6b1d2547-b791-4d62-adce-a4881352a46d__862eb7a7eeb6b7490153498e634cb182"/>
                                 高逼格设计天团高逼格设计天团高逼
                             </p>
-                            <p> <a-avatar slot="avatar" size="small" src="https://axure-file.lanhuapp.com/6b1d2547-b791-4d62-adce-a4881352a46d__862eb7a7eeb6b7490153498e634cb182"/>
+                            <p>
+                                <a-avatar slot="avatar" size="small"
+                                          src="https://axure-file.lanhuapp.com/6b1d2547-b791-4d62-adce-a4881352a46d__862eb7a7eeb6b7490153498e634cb182"/>
                                 中二少女团中二少女团中二少女团中二少高逼格设计天团高逼格设计天团高逼
                             </p>
-                            <p> <a-avatar slot="avatar" size="small" src="https://axure-file.lanhuapp.com/6b1d2547-b791-4d62-adce-a4881352a46d__862eb7a7eeb6b7490153498e634cb182"/>
+                            <p>
+                                <a-avatar slot="avatar" size="small"
+                                          src="https://axure-file.lanhuapp.com/6b1d2547-b791-4d62-adce-a4881352a46d__862eb7a7eeb6b7490153498e634cb182"/>
                                 程序员日常程序员日常程序员日常程序员高逼格设计天团高逼格设计天团高逼
                             </p>
-                            <p> <a-avatar slot="avatar" size="small" src="https://axure-file.lanhuapp.com/6b1d2547-b791-4d62-adce-a4881352a46d__862eb7a7eeb6b7490153498e634cb182"/>
+                            <p>
+                                <a-avatar slot="avatar" size="small"
+                                          src="https://axure-file.lanhuapp.com/6b1d2547-b791-4d62-adce-a4881352a46d__862eb7a7eeb6b7490153498e634cb182"/>
                                 科学搬砖组科学搬砖组科学搬砖组科学学高逼格设计天团高逼格设计天团高逼
                             </p>
                         </div>
                     </a-card>
-                    <a-card  title="团队">
+                    <a-card title="团队">
                         <div class="members">
                             <a-row>
                                 <a-col :span="12">
@@ -218,25 +229,18 @@
     export default {
         name: 'home',
         created() {
-            this.account();
+            this.$notification.open({
+                message: '欢迎' + this.$store.state.account.firstName,
+            });
         },
-        methods: {
-            account: function () {
-                this.$api.user.getAccount().then(res => {
-                        this.$notification.open({
-                            message: '欢迎' + res.data.firstName,
-
-                        });
-                    }
-                )
-            }
-        }
+        methods: {}
     }
 </script>
 <style scoped>
-    .content{
+    .content {
         margin: 0;
     }
+
     .project-item {
         display: flex;
         margin-top: 15px;
@@ -262,29 +266,35 @@
         flex: 0 0 auto;
         float: right;
     }
-    .content{
-       background: unset;
+
+    .content {
+        background: unset;
     }
-    .item-group{
+
+    .item-group {
         padding: 30px 30px;
     }
-    .item-group p{
+
+    .item-group p {
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
         padding: 5px;
     }
+
     .members a {
         display: block;
         margin: 12px 0;
     }
+
     .members a .member {
         font-size: 14px;
         color: rgba(0, 0, 0, .65);
         max-width: 100px;
         margin-left: 12px;
     }
-    .members a:hover span{
+
+    .members a:hover span {
         color: #1890ff;
     }
 

@@ -30,24 +30,13 @@ const errorHandle = (status, other) => {
         case 401:
             toLogin();
             break;
-        // 403 token过期
-        // 清除token并跳转登录页
-        case 403:
-            message.error('登录过期，请重新登录',5);
-            localStorage.removeItem('token');
-            sessionStorage.removeItem('token');
-            // store.commit('loginSuccess', null);
-            setTimeout(() => {
-                toLogin();
-            }, 1000);
-            break;
         // 404请求不存在
         case 404:
             message.error('请求的资源不存在',5);
             break;
         default:
             console.log(other);
-    }}
+    }};
 
 // 创建axios实例
 var instance = axios.create({    timeout: 1000 * 12});
@@ -64,7 +53,7 @@ instance.interceptors.request.use(
         // 后台根据携带的token判断用户的登录情况，并返回给我们对应的状态码
         // 而后我们可以在响应拦截器中，根据状态码进行一些统一的操作。
         if (store.state.token) {  // 判断是否存在token，如果存在的话，则每个http header都加上token
-            config.headers.Authorization = 'Bearer '+ `token ${store.state.token}`;
+            config.headers.Authorization = 'Bearer '+ `${store.state.token}`;
         }
         return config;
     },

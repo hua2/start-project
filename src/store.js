@@ -1,10 +1,14 @@
 import Vuex from 'vuex';
 import Vue from 'vue';
 
+import api from './api' // 导入api接口
+
 Vue.use(Vuex);
 export default new Vuex.Store({
     state: {
-        token: null
+        token: null,
+        account: null,
+
     },
     mutations: {
         // 登录成功将, token保存在localStorage中
@@ -21,6 +25,24 @@ export default new Vuex.Store({
             localStorage.removeItem('token');
             sessionStorage.removeItem('token');
             state.token = null
+        },
+        setAccount: (state, data) => {
+            state.account = data;
+        },
+        initToken: (state) => {
+            const token = localStorage.getItem('token') || sessionStorage.getItem('token');
+            if (token) {
+                state.token = token;
+            }
+        }
+
+    },
+    actions: {
+        initAccount({commit}) {
+            api.user.getAccount().then(res => {
+                console.log(res.data);
+                commit('setAccount', res.data);
+            })
         }
     }
 });

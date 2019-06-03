@@ -77,7 +77,7 @@
             return {
                 form: this.$form.createForm(this),
                 language: [{name: '中文（简体）', select: 'zh-cn'}, {name: 'English', select: 'en'}],
-                accountData:{}
+                accountData: {}
 
             }
         },
@@ -97,20 +97,36 @@
                         }).then(() => {
                             // 执行某些操作
                             this.$message.success('设置保存成功!');
+                            this.$store.dispatch('initAccount');
                         })
                     }
                 });
             },
             account() {
-                this.$api.user.getAccount().then((res) => {
-                    const data =res.data;
-                    this.accountData = data; //存放所有数据
-                    const {form:{setFieldsValue}} = this;
-                    this.$nextTick(() =>{ //set到form表
-                        setFieldsValue({firstName: data.firstName,lastName: data.lastName,email: data.email,langKey: data.langKey})
-                    });
-                    }
-                )
+                // this.$store.state.account;
+                const data = this.$store.state.account;
+                this.accountData = data; //存放所有数据
+                console.error(data);
+                const {form: {setFieldsValue}} = this;
+                this.$nextTick(() => { //set到form表
+                    setFieldsValue({
+                        firstName: data.firstName,
+                        lastName: data.lastName,
+                        email: data.email,
+                        langKey: data.langKey
+                    })
+                });
+
+
+                // this.$api.user.getAccount().then((res) => {
+                //     const data =res.data;
+                //     this.accountData = data; //存放所有数据
+                //     const {form:{setFieldsValue}} = this;
+                //     this.$nextTick(() =>{ //set到form表
+                //         setFieldsValue({firstName: data.firstName,lastName: data.lastName,email: data.email,langKey: data.langKey})
+                //     });
+                //     }
+                // )
             }
         }
     }

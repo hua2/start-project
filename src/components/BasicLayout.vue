@@ -67,7 +67,7 @@
                                 <a class="action" href="#">
                                     <a-avatar class="avatar" size="small" style="margin-right: 12px"
                                               src="https://axure-file.lanhuapp.com/6b1d2547-b791-4d62-adce-a4881352a46d__862eb7a7eeb6b7490153498e634cb182"/>
-                                    天野远子
+                                    {{$store.state.account.firstName}}
                                 </a>
                                 <a-menu slot="overlay">
                                     <a-menu-item key="0" @click="setClick">

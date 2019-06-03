@@ -88,6 +88,7 @@
                             // 执行某些操作
                             if (res.data.id_token) {
                                 this.$store.commit('login',{token:res.data.id_token,rememberMe:values.rememberMe});
+                                this.$store.dispatch('initAccount');
                                 this.$router.push('/home');
                             }
                         }).catch(()=>{
